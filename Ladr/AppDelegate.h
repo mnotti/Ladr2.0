@@ -4,7 +4,8 @@
 //
 //  Created by Markus Notti on 1/31/15.
 //  Copyright (c) 2015 Markus Notti. All rights reserved.
-//
+
+//  Testing first commit
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
