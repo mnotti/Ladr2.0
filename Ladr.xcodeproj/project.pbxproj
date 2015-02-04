@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A7CC5F11A818F5800E6637B /* ladrLogo1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7CC5EF1A818F5800E6637B /* ladrLogo1@3x.png */; };
-		4A7CC5F21A818F5800E6637B /* ladrLogo1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7CC5F01A818F5800E6637B /* ladrLogo1@2x.png */; };
+		4A30ECC51A81FAB400E276C7 /* ladrLogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A30ECC41A81FAB400E276C7 /* ladrLogo1.png */; };
+		4A30ECC81A82004B00E276C7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECC71A82004B00E276C7 /* LoginViewController.m */; };
+		4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */; };
 		4ABB3D251A7DE992001724D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D241A7DE992001724D5 /* main.m */; };
 		4ABB3D281A7DE992001724D5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D271A7DE992001724D5 /* AppDelegate.m */; };
 		4ABB3D2B1A7DE992001724D5 /* Ladr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D291A7DE992001724D5 /* Ladr.xcdatamodeld */; };
@@ -46,8 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4A7CC5EF1A818F5800E6637B /* ladrLogo1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ladrLogo1@3x.png"; path = "../../../ladrLogo1@3x.png"; sourceTree = "<group>"; };
-		4A7CC5F01A818F5800E6637B /* ladrLogo1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ladrLogo1@2x.png"; path = "../../../ladrLogo1@2x.png"; sourceTree = "<group>"; };
+		4A30ECC41A81FAB400E276C7 /* ladrLogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ladrLogo1.png; path = ../../../ladrArt/ladrLogo1.png; sourceTree = "<group>"; };
+		4A30ECC61A82004B00E276C7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		4A30ECC71A82004B00E276C7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		4A30ECC91A82005B00E276C7 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		4ABB3D1F1A7DE992001724D5 /* Ladr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ladr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABB3D231A7DE992001724D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ABB3D241A7DE992001724D5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -148,6 +152,10 @@
 			children = (
 				4ABB3D261A7DE992001724D5 /* AppDelegate.h */,
 				4ABB3D271A7DE992001724D5 /* AppDelegate.m */,
+				4A30ECC61A82004B00E276C7 /* LoginViewController.h */,
+				4A30ECC71A82004B00E276C7 /* LoginViewController.m */,
+				4A30ECC91A82005B00E276C7 /* SignUpViewController.h */,
+				4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */,
 				4ABB3D2C1A7DE992001724D5 /* ViewController.h */,
 				4ABB3D2D1A7DE992001724D5 /* ViewController.m */,
 				4ABB3D2F1A7DE992001724D5 /* Main.storyboard */,
@@ -186,8 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				4ABB3D401A7DE992001724D5 /* Info.plist */,
-				4A7CC5EF1A818F5800E6637B /* ladrLogo1@3x.png */,
-				4A7CC5F01A818F5800E6637B /* ladrLogo1@2x.png */,
+				4A30ECC41A81FAB400E276C7 /* ladrLogo1.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -282,8 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A7CC5F21A818F5800E6637B /* ladrLogo1@2x.png in Resources */,
-				4A7CC5F11A818F5800E6637B /* ladrLogo1@3x.png in Resources */,
+				4A30ECC51A81FAB400E276C7 /* ladrLogo1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,8 +302,10 @@
 			files = (
 				4ABB3D281A7DE992001724D5 /* AppDelegate.m in Sources */,
 				4ABB3D251A7DE992001724D5 /* main.m in Sources */,
+				4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */,
 				4ABB3D2E1A7DE992001724D5 /* ViewController.m in Sources */,
 				4ABB3D2B1A7DE992001724D5 /* Ladr.xcdatamodeld in Sources */,
+				4A30ECC81A82004B00E276C7 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
