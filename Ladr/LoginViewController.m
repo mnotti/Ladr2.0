@@ -23,6 +23,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)loginButton:(id)sender {
+}
 
 /*
 #pragma mark - Navigation

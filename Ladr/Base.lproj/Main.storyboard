@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="1217" y="239"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="k7C-jv-3VT">
             <objects>
-                <viewController id="sRy-M5-yEE" sceneMemberID="viewController">
+                <viewController id="sRy-M5-yEE" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pw5-pn-Tmy"/>
                         <viewControllerLayoutGuide type="bottom" id="4ad-Sa-N3u"/>
@@ -69,6 +69,9 @@
                                 <state key="normal" title="Sign In!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="sRy-M5-yEE" eventType="touchUpInside" id="FnT-rj-O41"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJG-pB-5HR">
                                 <rect key="frame" x="192" y="411" width="216" height="30"/>
@@ -97,20 +100,24 @@
                             <constraint firstItem="2gy-ZN-ISm" firstAttribute="leading" secondItem="9uN-qb-4uB" secondAttribute="leading" id="yME-4d-KiG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordField" destination="2gy-ZN-ISm" id="cwg-BC-wBk"/>
+                        <outlet property="usernameField" destination="9uN-qb-4uB" id="6hC-dI-Gqu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dia-fn-GH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1937" y="239"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="qGF-9i-P6V">
             <objects>
-                <viewController id="om5-aH-c6q" sceneMemberID="viewController">
+                <viewController id="om5-aH-c6q" customClass="SignUpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nr2-qt-mWM"/>
                         <viewControllerLayoutGuide type="bottom" id="izz-vW-fUx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DW3-hM-cWG">
+                    <view key="view" contentMode="scaleToFill" id="DW3-hM-cWG" customClass="SignUpView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -135,17 +142,20 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F61-5W-0Au">
-                                <rect key="frame" x="276" y="440" width="59" height="30"/>
-                                <state key="normal" title="Sign Up!">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y2U-Fn-qSc">
                                 <rect key="frame" x="101" y="382" width="399" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F61-5W-0Au">
+                                <rect key="frame" x="271" y="420" width="59" height="30"/>
+                                <state key="normal" title="Sign Up!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpButton:" destination="om5-aH-c6q" eventType="touchUpInside" id="1aK-eu-uCm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.50980392159999999" green="0.81176470590000005" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -153,17 +163,22 @@
                             <constraint firstItem="mOP-WP-TE7" firstAttribute="top" secondItem="lnT-h2-fAf" secondAttribute="bottom" constant="8" symbolic="YES" id="CcB-Qd-5ZN"/>
                             <constraint firstItem="Y2U-Fn-qSc" firstAttribute="leading" secondItem="BTL-vV-2Du" secondAttribute="leading" id="GDe-WJ-lUa"/>
                             <constraint firstItem="lnT-h2-fAf" firstAttribute="centerX" secondItem="DW3-hM-cWG" secondAttribute="centerX" id="Hsg-UL-6wq"/>
-                            <constraint firstItem="F61-5W-0Au" firstAttribute="top" secondItem="Y2U-Fn-qSc" secondAttribute="bottom" constant="28" id="P8H-u0-t8Y"/>
                             <constraint firstItem="mOP-WP-TE7" firstAttribute="leading" secondItem="DW3-hM-cWG" secondAttribute="leadingMargin" constant="85" id="UDO-KN-2dk"/>
                             <constraint firstItem="Y2U-Fn-qSc" firstAttribute="centerX" secondItem="lnT-h2-fAf" secondAttribute="centerX" id="VCV-Jz-E1b"/>
                             <constraint firstItem="Y2U-Fn-qSc" firstAttribute="trailing" secondItem="BTL-vV-2Du" secondAttribute="trailing" id="Ws6-NQ-qf9"/>
                             <constraint firstItem="BTL-vV-2Du" firstAttribute="trailing" secondItem="mOP-WP-TE7" secondAttribute="trailing" id="Xau-JD-ezL"/>
                             <constraint firstItem="Y2U-Fn-qSc" firstAttribute="top" secondItem="BTL-vV-2Du" secondAttribute="bottom" constant="17" id="adX-Oc-2gm"/>
+                            <constraint firstItem="F61-5W-0Au" firstAttribute="top" secondItem="Y2U-Fn-qSc" secondAttribute="bottom" constant="8" symbolic="YES" id="eP7-YC-cby"/>
                             <constraint firstItem="Y2U-Fn-qSc" firstAttribute="leading" secondItem="mOP-WP-TE7" secondAttribute="leading" id="nbX-d6-SCg"/>
                             <constraint firstItem="lnT-h2-fAf" firstAttribute="top" secondItem="Nr2-qt-mWM" secondAttribute="bottom" constant="127" id="rXa-aV-r5U"/>
-                            <constraint firstItem="F61-5W-0Au" firstAttribute="leading" secondItem="DW3-hM-cWG" secondAttribute="leading" constant="276" id="wl1-HS-IEK"/>
+                            <constraint firstItem="F61-5W-0Au" firstAttribute="centerX" secondItem="Y2U-Fn-qSc" secondAttribute="centerX" id="sbg-qX-BdE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordField1" destination="BTL-vV-2Du" id="hcZ-px-V30"/>
+                        <outlet property="passwordFieldConfirm" destination="Y2U-Fn-qSc" id="PCV-hW-8TF"/>
+                        <outlet property="usernameField" destination="mOP-WP-TE7" id="MNA-jf-o5k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CYn-sx-IoF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
