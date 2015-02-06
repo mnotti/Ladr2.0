@@ -10,10 +10,10 @@
 		4A30ECC51A81FAB400E276C7 /* ladrLogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A30ECC41A81FAB400E276C7 /* ladrLogo1.png */; };
 		4A30ECC81A82004B00E276C7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECC71A82004B00E276C7 /* LoginViewController.m */; };
 		4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */; };
+		4A9CC3621A847374006F8706 /* homePageTableViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */; };
 		4ABB3D251A7DE992001724D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D241A7DE992001724D5 /* main.m */; };
 		4ABB3D281A7DE992001724D5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D271A7DE992001724D5 /* AppDelegate.m */; };
 		4ABB3D2B1A7DE992001724D5 /* Ladr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D291A7DE992001724D5 /* Ladr.xcdatamodeld */; };
-		4ABB3D2E1A7DE992001724D5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D2D1A7DE992001724D5 /* ViewController.m */; };
 		4ABB3D311A7DE992001724D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ABB3D2F1A7DE992001724D5 /* Main.storyboard */; };
 		4ABB3D331A7DE992001724D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ABB3D321A7DE992001724D5 /* Images.xcassets */; };
 		4ABB3D361A7DE992001724D5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ABB3D341A7DE992001724D5 /* LaunchScreen.xib */; };
@@ -52,14 +52,14 @@
 		4A30ECC71A82004B00E276C7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4A30ECC91A82005B00E276C7 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		4A9CC3601A847374006F8706 /* homePageTableViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homePageTableViewTableViewController.h; sourceTree = "<group>"; };
+		4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = homePageTableViewTableViewController.m; sourceTree = "<group>"; };
 		4ABB3D1F1A7DE992001724D5 /* Ladr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ladr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABB3D231A7DE992001724D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ABB3D241A7DE992001724D5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4ABB3D261A7DE992001724D5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4ABB3D271A7DE992001724D5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4ABB3D2A1A7DE992001724D5 /* Ladr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ladr.xcdatamodel; sourceTree = "<group>"; };
-		4ABB3D2C1A7DE992001724D5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4ABB3D2D1A7DE992001724D5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4ABB3D301A7DE992001724D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4ABB3D321A7DE992001724D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4ABB3D351A7DE992001724D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -156,8 +156,8 @@
 				4A30ECC71A82004B00E276C7 /* LoginViewController.m */,
 				4A30ECC91A82005B00E276C7 /* SignUpViewController.h */,
 				4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */,
-				4ABB3D2C1A7DE992001724D5 /* ViewController.h */,
-				4ABB3D2D1A7DE992001724D5 /* ViewController.m */,
+				4A9CC3601A847374006F8706 /* homePageTableViewTableViewController.h */,
+				4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */,
 				4ABB3D2F1A7DE992001724D5 /* Main.storyboard */,
 				4ABB3D321A7DE992001724D5 /* Images.xcassets */,
 				4ABB3D341A7DE992001724D5 /* LaunchScreen.xib */,
@@ -303,7 +303,7 @@
 				4ABB3D281A7DE992001724D5 /* AppDelegate.m in Sources */,
 				4ABB3D251A7DE992001724D5 /* main.m in Sources */,
 				4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */,
-				4ABB3D2E1A7DE992001724D5 /* ViewController.m in Sources */,
+				4A9CC3621A847374006F8706 /* homePageTableViewTableViewController.m in Sources */,
 				4ABB3D2B1A7DE992001724D5 /* Ladr.xcdatamodeld in Sources */,
 				4A30ECC81A82004B00E276C7 /* LoginViewController.m in Sources */,
 			);
@@ -434,6 +434,7 @@
 				INFOPLIST_FILE = Ladr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -448,6 +449,7 @@
 				INFOPLIST_FILE = Ladr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

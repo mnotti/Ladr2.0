@@ -6,20 +6,21 @@
 //  Copyright (c) 2015 Markus Notti. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "mainScreenVC.h"
 
-@interface ViewController ()
+@interface mainScreenVC ()
 
 @end
 
-@implementation ViewController
+@implementation mainScreenVC
+
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-  
+    
     [self performSegueWithIdentifier:@"showLogin" sender:self];
-    NSLog(@"did not perform segue");
 }
 
 - (void)didReceiveMemoryWarning {

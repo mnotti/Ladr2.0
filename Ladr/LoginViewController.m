@@ -16,7 +16,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //hide the back button until the user logs on
+    self.navigationItem.hidesBackButton = YES;
+    
+    //remove keyboard after tap on screen:
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    //end of remove keyboard after screen tap
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,6 +35,20 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)loginButton:(id)sender {
+    [PFUser logInWithUsernameInBackground:self.usernameField.text password:self.passwordField.text
+                                    block:^(PFUser *user, NSError *error) {
+                                        if (user) {
+                                            // Do stuff after successful login.
+                                            NSLog(@"login successful!");
+                                            [self.navigationController popToRootViewControllerAnimated:YES];
+
+                                        } else {
+                                            // The login failed. Check error to see why.
+                                            NSLog(@"login failed");
+                                            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ya done fucked up" message:@"something's incorrect dude" delegate:self cancelButtonTitle:@"geez i'm real sorry man" otherButtonTitles:nil, nil];
+                                            [alert show];
+                                        }
+                                    }];
 }
 
 /*
@@ -35,5 +60,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)dismissKeyboard {
+    [self.passwordField resignFirstResponder];
+    [self.usernameField resignFirstResponder];
+}
 
 @end
