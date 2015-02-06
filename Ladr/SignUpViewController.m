@@ -63,7 +63,25 @@
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error)
             {
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                //LOGIN THE USER AFTER SIGNUP
+                [PFUser logInWithUsernameInBackground:self.usernameField.text password:self.passwordField1.text
+                                                block:^(PFUser *user, NSError *error) {
+                                                    if (user) {
+                                                        // Do stuff after successful login.
+                                                        NSLog(@"login successful!");
+                                                        
+                                                        //NAVIGATE TO THE HOME PAGE
+                                                        AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+                                                        
+                                                        appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+                                                        
+                                                    } else {
+                                                        // The login failed. Check error to see why.
+                                                        NSLog(@"login failed");
+                                                        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ya done fucked up" message:@"something's incorrect dude" delegate:self cancelButtonTitle:@"geez i'm real sorry man" otherButtonTitles:nil, nil];
+                                                        [alert show];
+                                                    }
+                                                }];
             }
             else {
                 NSString *errorString = [error userInfo][@"error"];
@@ -73,7 +91,10 @@
                 // Show the errorString somewhere and let the user try again.
             }
         }];
-    }
+        
+        
+        
+           }
     
 
 

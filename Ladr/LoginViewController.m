@@ -40,7 +40,11 @@
                                         if (user) {
                                             // Do stuff after successful login.
                                             NSLog(@"login successful!");
-                                            [self.navigationController popToRootViewControllerAnimated:YES];
+                                            
+                                            //NAVIGATE TO THE HOME SCREEN
+                                             AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+                                            
+                                          appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
 
                                         } else {
                                             // The login failed. Check error to see why.

@@ -18,7 +18,8 @@
     [super viewDidLoad];
     
     //segue to signin screen if not logged in
-    [self performSegueWithIdentifier:@"showLogin" sender:self];
+    
+    //[self performSegueWithIdentifier:@"showLogin" sender:self];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

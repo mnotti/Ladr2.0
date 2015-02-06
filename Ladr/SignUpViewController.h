@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 @interface SignUpViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
