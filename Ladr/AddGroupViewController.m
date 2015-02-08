@@ -19,8 +19,15 @@
     
     PFUser *currentUser = [PFUser currentUser];
     self.currentUser = currentUser;
-    self.userGroups = currentUser[@"groups"];
     
+    if (currentUser[@"groups"])
+    {
+        self.userGroups = currentUser[@"groups"];
+    }
+    else
+    {
+        self.userGroups = [[NSMutableArray alloc] init];
+    }
     PFQuery* queryForFriends = [PFUser query];
     [queryForFriends orderByAscending:@"score"];
     [queryForFriends findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -50,6 +57,7 @@
     }
     else{
         [self.userGroups insertObject:self.groupNameTextField.text atIndex:0];
+
         self.currentUser [@"groups"] = self.userGroups;
         [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {

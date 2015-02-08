@@ -14,15 +14,26 @@
 
 @implementation homePageTableViewTableViewController
 
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    PFUser* currentUser = [PFUser currentUser];
+    
+    self.userGroups = currentUser[@"groups"];
+    NSLog(@"%@", [self.userGroups objectAtIndex:0]);
+    
+    [self.tableView reloadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
     //testing if we can access groups
-    PFUser* currentUser = [PFUser currentUser];
-    
-    self.userGroups = currentUser[@"groups"];
-    NSLog(@"%@", [self.userGroups objectAtIndex:0]);
+//    PFUser* currentUser = [PFUser currentUser];
+//    
+//    self.userGroups = currentUser[@"groups"];
+//    NSLog(@"%@", [self.userGroups objectAtIndex:0]);
     //testing over
     
     
