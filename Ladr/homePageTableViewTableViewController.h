@@ -11,4 +11,7 @@
 
 @interface homePageTableViewTableViewController : UITableViewController
 
+
+@property (nonatomic, strong) NSArray* userGroups;
+
 @end

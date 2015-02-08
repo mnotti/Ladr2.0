@@ -17,11 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //segue to signin screen if not logged in
     
-    //[self performSegueWithIdentifier:@"showLogin" sender:self];
+    //testing if we can access groups
+    PFUser* currentUser = [PFUser currentUser];
     
-    // Uncomment the following line to preserve selection between presentations.
+    self.userGroups = currentUser[@"groups"];
+    NSLog(@"%@", [self.userGroups objectAtIndex:0]);
+    //testing over
+    
+    
+    
+    
+        // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -38,24 +45,25 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.userGroups count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainScreenCell" forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    cell.textLabel.text = [self.userGroups objectAtIndex:indexPath.row];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -100,5 +108,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - buttons
+- (IBAction)addGroupButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"showAddGroupController" sender:self];
+    
+}
+
+
 
 @end
