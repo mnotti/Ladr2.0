@@ -75,20 +75,25 @@
 
 - (IBAction)createNewGroupRequest:(id)sender //clicking the done button
 {
+    self.doneButton.enabled = NO;
     if ([self.groupNameTextField.text  isEqual: @""]) //if user didn't type any text
     {
+        self.doneButton.enabled =YES;
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You literally suck" message:@"You need to enter a group name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
         [alert show];
     }
     
     else if ([self.userGroups containsObject: self.groupNameTextField.text]) //if group already exists
     {
+        self.doneButton.enabled =YES;
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Try a New Name" message:@"You are already in a group with that name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
         [alert show];
     }
     
+    
     else //if group is ready to be added
     {
+      
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
         //CONSIDER MULTITHREADING THIS INSTEAD OF STACKING THEM ONE AFTER THE OTHER////////////////
@@ -116,7 +121,7 @@
                 [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) //current user's group list updated
                     {
-                        
+                        self.doneButton.enabled = YES;
                         [self.navigationController popToRootViewControllerAnimated:YES]; //return to main screen
                     }
                 }];

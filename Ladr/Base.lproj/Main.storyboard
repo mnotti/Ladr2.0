@@ -109,6 +109,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="Dvp-rK-Y6F" id="SLt-FK-B0y"/>
                         <outlet property="friendsTableView" destination="oqk-04-hEB" id="juB-db-IC0"/>
                         <outlet property="groupNameTextField" destination="4la-Hz-ttb" id="Q3u-zP-R8v"/>
                         <outlet property="searchDisplayController" destination="lPm-LS-kCc" id="vPp-pU-clQ"/>

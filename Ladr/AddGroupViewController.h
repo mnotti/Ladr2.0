@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *groupNameTextField;
 @property (weak, nonatomic) IBOutlet UITableView *friendsTableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 @property (strong, nonatomic) NSMutableArray* userGroups;
 @property (strong, nonatomic) NSMutableArray* usersSelected;
