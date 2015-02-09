@@ -16,19 +16,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.cellsSelected = [NSMutableArray array];
+
     
-    PFUser *currentUser = [PFUser currentUser];
+        PFUser *currentUser = [PFUser currentUser]; //setup and initialize current user
     self.currentUser = currentUser;
     
-    if (currentUser[@"groups"])
+    self.usersSelected = [[NSMutableArray alloc] init]; //initialize array
+    
+    if (currentUser[@"groups"]) //if user is in groups already
     {
         self.userGroups = currentUser[@"groups"];
     }
-    else
+    else    //if user is not in groups currently
     {
-        self.userGroups = [[NSMutableArray alloc] init];
+        self.userGroups = [[NSMutableArray alloc] init]; //allocate space for groups array
     }
-    PFQuery* queryForFriends = [PFUser query];
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////////
+    //MAKE THIS A MORE DETAILED QUERY IN THE FUTURE//////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+
+    PFQuery* queryForFriends = [PFUser query];  //query for all users
     [queryForFriends orderByAscending:@"score"];
     [queryForFriends findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     
@@ -41,6 +51,11 @@
             NSLog(@"error querying for users");
         }
     }];
+    /////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+
+
     
     // Do any additional setup after loading the view.
 }
@@ -49,23 +64,39 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)createNewGroupRequest:(id)sender {
-    if ([self.userGroups containsObject: self.groupNameTextField.text])
+- (IBAction)createNewGroupRequest:(id)sender //clicking the done button
+{
+    if ([self.groupNameTextField.text  isEqual: @""]) //if user didn't type any text
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You literally suck" message:@"You need to enter a group name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else if ([self.userGroups containsObject: self.groupNameTextField.text]) //if group already exists
     {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Try a New Name" message:@"You are already in a group with that name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
         [alert show];
     }
-    else{
-        [self.userGroups insertObject:self.groupNameTextField.text atIndex:0];
+    else //if group is ready to be added
+    {
+        PFObject* newGroup = [PFObject objectWithClassName:@"Group"]; //makes new group object
+        NSMutableArray* groupMembers = [[NSMutableArray alloc] initWithObjects:self.currentUser, nil];
+        newGroup[@"members"] = groupMembers; //adds ggroup with creator as only member
+        [newGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded)
+            {
+                [self.userGroups insertObject:self.groupNameTextField.text atIndex:0]; //adds group to user's group list
+                self.currentUser [@"groups"] = self.userGroups;
+                [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        
+                        [self.navigationController popToRootViewControllerAnimated:YES]; //return to main screen
+                    }
+                }];
 
-        self.currentUser [@"groups"] = self.userGroups;
-        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                [self.navigationController popToRootViewControllerAnimated:YES];
             }
         }];
     }
-    
+
 }
 
 /*
@@ -91,16 +122,35 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath     *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell.accessoryType == UITableViewCellAccessoryNone)
+    
+    /////////////////////////////////////////////////
+    
+    /////////////////////////////////
+    long indexInt = indexPath.row;
+
+    
+    //if (cell.accessoryType == UITableViewCellAccessoryNone) //if there's no check
+    if (![self.cellsSelected containsObject:indexPath])
     {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.cellsSelected addObject:indexPath];
+        
+        [self.usersSelected addObject: [self.potentialFriends objectAtIndex:indexInt]];
+        NSLog(@"User selected to be added to array: %@", [self.potentialFriends objectAtIndex:indexInt]);
+        cell.accessoryType = UITableViewCellAccessoryCheckmark; //add a check
+        
+    }
+    else  //if there's a check already
+    {
+        [self.cellsSelected removeObject:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryNone; //take away check
+        
+                [self.usersSelected removeObject: [self.potentialFriends objectAtIndex:indexInt]];
 
     }
-    else
-    {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    [tableView reloadData];
+    
 }
+
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 //    // The header for the section is the region name -- get this from the region at the section index.
@@ -114,6 +164,16 @@
 //    if (cell == nil) {
 //        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier]];
 //    }
+    
+    if ([self.cellsSelected containsObject:indexPath])
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+    }
     self.friendBeingDisplayed = [self.potentialFriends objectAtIndex:indexPath.row];
     cell.textLabel.text = self.friendBeingDisplayed[@"username"];
     return cell;

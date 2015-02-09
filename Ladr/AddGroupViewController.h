@@ -9,13 +9,22 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface AddGroupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface AddGroupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
+    long rowsSelected[1000];
+    int currentIndexOfRowsSelected;
+}
+
 @property (weak, nonatomic) IBOutlet UITextField *groupNameTextField;
-@property (strong, nonatomic) NSMutableArray* userGroups;
-@property (strong, nonatomic) PFUser* currentUser;
-@property (strong, nonatomic) NSArray* potentialFriends;
-@property (strong, nonatomic) PFUser* friendBeingDisplayed;
 @property (weak, nonatomic) IBOutlet UITableView *friendsTableView;
+
+@property (strong, nonatomic) NSMutableArray* userGroups;
+@property (strong, nonatomic) NSMutableArray* usersSelected;
+@property (strong, nonatomic) NSMutableArray* cellsSelected;
+
+@property (strong, nonatomic) NSArray* potentialFriends;
+
+@property (strong, nonatomic) PFUser* friendBeingDisplayed;
+@property (strong, nonatomic) PFUser* currentUser;
 
 
 @end
