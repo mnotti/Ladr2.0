@@ -13,5 +13,6 @@
 
 
 @property (nonatomic, strong) NSArray* userGroups;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 
 @end

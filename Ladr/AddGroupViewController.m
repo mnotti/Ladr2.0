@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+    
+
+    
     //to remove the keyboard when tapping outside of it
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -107,21 +112,29 @@
         [newGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) //newGroupCreated with initial member being current User
             {
+                NSLog(@"new group saved");
+
                 for (PFUser* userToRequest in self.usersSelected)
                 {
                     PFObject* newGroupRequest = [PFObject objectWithClassName:@"GroupRequest"];
                     newGroupRequest[@"from"] = self.currentUser;
                     newGroupRequest[@"to"] = userToRequest;
                     newGroupRequest[@"group"] = newGroup;
+                    newGroupRequest[@"groupName"] = self.groupNameTextField.text;
                     [newGroupRequest saveInBackground];
-                    
+                    NSLog(@"one request saved");
+
                 }
+                
                 [self.userGroups insertObject:self.groupNameTextField.text atIndex:0]; //adds group to user's group list
                 self.currentUser [@"groups"] = self.userGroups;
                 [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) //current user's group list updated
                     {
+                        NSLog(@"user saved");
+
                         self.doneButton.enabled = YES;
+                        NSLog(@"user saved and button enabled");
                         [self.navigationController popToRootViewControllerAnimated:YES]; //return to main screen
                     }
                 }];

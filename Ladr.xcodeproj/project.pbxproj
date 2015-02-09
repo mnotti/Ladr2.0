@@ -11,6 +11,7 @@
 		4A30ECC81A82004B00E276C7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECC71A82004B00E276C7 /* LoginViewController.m */; };
 		4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */; };
 		4A59ABE71A8568E20035E531 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ABE61A8568E20035E531 /* AddGroupViewController.m */; };
+		4A60F1F81A88BF9800E2A0C4 /* NotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A60F1F71A88BF9800E2A0C4 /* NotificationTableViewController.m */; };
 		4A9CC3621A847374006F8706 /* homePageTableViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */; };
 		4ABB3D251A7DE992001724D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D241A7DE992001724D5 /* main.m */; };
 		4ABB3D281A7DE992001724D5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D271A7DE992001724D5 /* AppDelegate.m */; };
@@ -55,6 +56,8 @@
 		4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		4A59ABE51A8568E20035E531 /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupViewController.h; sourceTree = "<group>"; };
 		4A59ABE61A8568E20035E531 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
+		4A60F1F61A88BF9800E2A0C4 /* NotificationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewController.h; sourceTree = "<group>"; };
+		4A60F1F71A88BF9800E2A0C4 /* NotificationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewController.m; sourceTree = "<group>"; };
 		4A9CC3601A847374006F8706 /* homePageTableViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homePageTableViewTableViewController.h; sourceTree = "<group>"; };
 		4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = homePageTableViewTableViewController.m; sourceTree = "<group>"; };
 		4ABB3D1F1A7DE992001724D5 /* Ladr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ladr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +166,8 @@
 				4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */,
 				4A59ABE51A8568E20035E531 /* AddGroupViewController.h */,
 				4A59ABE61A8568E20035E531 /* AddGroupViewController.m */,
+				4A60F1F61A88BF9800E2A0C4 /* NotificationTableViewController.h */,
+				4A60F1F71A88BF9800E2A0C4 /* NotificationTableViewController.m */,
 				4ABB3D2F1A7DE992001724D5 /* Main.storyboard */,
 				4ABB3D321A7DE992001724D5 /* Images.xcassets */,
 				4ABB3D341A7DE992001724D5 /* LaunchScreen.xib */,
@@ -311,6 +316,7 @@
 				4A9CC3621A847374006F8706 /* homePageTableViewTableViewController.m in Sources */,
 				4ABB3D2B1A7DE992001724D5 /* Ladr.xcdatamodeld in Sources */,
 				4A59ABE71A8568E20035E531 /* AddGroupViewController.m in Sources */,
+				4A60F1F81A88BF9800E2A0C4 /* NotificationTableViewController.m in Sources */,
 				4A30ECC81A82004B00E276C7 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

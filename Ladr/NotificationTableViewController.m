@@ -1,52 +1,44 @@
 //
-//  homePageTableViewTableViewController.m
+//  NotificationTableViewController.m
 //  Ladr
 //
-//  Created by Markus Notti on 2/5/15.
+//  Created by Markus Notti on 2/9/15.
 //  Copyright (c) 2015 Markus Notti. All rights reserved.
 //
 
-#import "homePageTableViewTableViewController.h"
+#import "NotificationTableViewController.h"
 
-@interface homePageTableViewTableViewController ()
+@interface NotificationTableViewController ()
 
 @end
 
-@implementation homePageTableViewTableViewController
+@implementation NotificationTableViewController
 
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    UIBarButtonItem *addGroupBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction)];
-    
-    UIBarButtonItem *notificationsBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"!" style:UIBarButtonItemStylePlain target:self action:@selector(notificationAction)];
-    
-    self.navBar.rightBarButtonItems = [[NSArray alloc] initWithObjects:addGroupBarButtonItem, notificationsBarButtonItem, nil];
-
-    PFUser* currentUser = [PFUser currentUser];
-    
-    self.userGroups = currentUser[@"groups"];
-    NSLog(@"%@", [self.userGroups objectAtIndex:0]);
-    
-    [self.tableView reloadData];
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pendingRequests = NULL;
+    self.tempGroups = [[NSMutableArray alloc] init];
     
-    //testing if we can access groups
-//    PFUser* currentUser = [PFUser currentUser];
-//    
-//    self.userGroups = currentUser[@"groups"];
-//    NSLog(@"%@", [self.userGroups objectAtIndex:0]);
-    //testing over
+
+    
+    ////////////////
+    PFQuery *query2 = [PFQuery queryWithClassName:@"GroupRequest"];
+    [query2 whereKey:@"to" equalTo:[PFUser currentUser]];
+    [query2 includeKey:@"group"];
+    [query2 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        for (PFObject *object in objects)
+        {
+            NSLog(@"%@", object[@"group"][@"name"]);
+            [self.tempGroups insertObject:object[@"group"][@"name"] atIndex:0];
+        }
+        NSLog(@"%@", self.tempGroups);
+        self.pendingRequests = objects;
+        [self.tableView reloadData];
+                  }];
     
     
-    
-    
-        // Uncomment the following line to preserve selection between presentations.
+    // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -69,15 +61,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.userGroups count];
+    return [self.tempGroups count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainScreenCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notificationCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [self.userGroups objectAtIndex:indexPath.row];
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
+    cell.textLabel.text = [self.tempGroups objectAtIndex:indexPath.row];
+
 
     return cell;
 }
@@ -126,17 +119,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-#pragma mark - buttons
-- (void)addAction{
-    [self performSegueWithIdentifier:@"showAddGroupController" sender:self];
-    
-}
-
--(void)notificationAction{
-    [self performSegueWithIdentifier:@"showNotificationTable" sender:self];
-}
-
-
 
 @end
