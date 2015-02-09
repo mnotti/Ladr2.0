@@ -16,14 +16,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.cellsSelected = [NSMutableArray array];
+    
+    //to remove the keyboard when tapping outside of it
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tap];
+    
 
     
-        PFUser *currentUser = [PFUser currentUser]; //setup and initialize current user
-    self.currentUser = currentUser;
-    
+    self.cellsSelected = [NSMutableArray array];
     self.usersSelected = [[NSMutableArray alloc] init]; //initialize array
-    
+
+    PFUser *currentUser = [PFUser currentUser]; //setup and initialize current user
+    self.currentUser = currentUser;
+
     if (currentUser[@"groups"]) //if user is in groups already
     {
         self.userGroups = currentUser[@"groups"];
@@ -64,6 +72,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)createNewGroupRequest:(id)sender //clicking the done button
 {
     if ([self.groupNameTextField.text  isEqual: @""]) //if user didn't type any text
@@ -71,23 +80,42 @@
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You literally suck" message:@"You need to enter a group name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
         [alert show];
     }
+    
     else if ([self.userGroups containsObject: self.groupNameTextField.text]) //if group already exists
     {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Try a New Name" message:@"You are already in a group with that name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
         [alert show];
     }
+    
     else //if group is ready to be added
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //CONSIDER MULTITHREADING THIS INSTEAD OF STACKING THEM ONE AFTER THE OTHER////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
         PFObject* newGroup = [PFObject objectWithClassName:@"Group"]; //makes new group object
         NSMutableArray* groupMembers = [[NSMutableArray alloc] initWithObjects:self.currentUser, nil];
         newGroup[@"members"] = groupMembers; //adds ggroup with creator as only member
+        newGroup[@"name"] = self.groupNameTextField.text;
         [newGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded)
+            if (succeeded) //newGroupCreated with initial member being current User
             {
+                for (PFUser* userToRequest in self.usersSelected)
+                {
+                    PFObject* newGroupRequest = [PFObject objectWithClassName:@"GroupRequest"];
+                    newGroupRequest[@"from"] = self.currentUser;
+                    newGroupRequest[@"to"] = userToRequest;
+                    newGroupRequest[@"group"] = newGroup;
+                    [newGroupRequest saveInBackground];
+                    
+                }
                 [self.userGroups insertObject:self.groupNameTextField.text atIndex:0]; //adds group to user's group list
                 self.currentUser [@"groups"] = self.userGroups;
                 [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
+                    if (succeeded) //current user's group list updated
+                    {
                         
                         [self.navigationController popToRootViewControllerAnimated:YES]; //return to main screen
                     }
@@ -95,6 +123,10 @@
 
             }
         }];
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
     }
 
 }
@@ -144,7 +176,7 @@
         [self.cellsSelected removeObject:indexPath];
         cell.accessoryType = UITableViewCellAccessoryNone; //take away check
         
-                [self.usersSelected removeObject: [self.potentialFriends objectAtIndex:indexInt]];
+        [self.usersSelected removeObject: [self.potentialFriends objectAtIndex:indexInt]];
 
     }
     [tableView reloadData];
@@ -178,5 +210,12 @@
     cell.textLabel.text = self.friendBeingDisplayed[@"username"];
     return cell;
 }
+
+-(void)dismissKeyboard {
+    [self.groupNameTextField resignFirstResponder];
+    
+}
+
+
 
 @end

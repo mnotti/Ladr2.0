@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface AddGroupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
-    long rowsSelected[1000];
-    int currentIndexOfRowsSelected;
-}
+@interface AddGroupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *groupNameTextField;
 @property (weak, nonatomic) IBOutlet UITableView *friendsTableView;
