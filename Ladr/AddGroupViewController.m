@@ -106,9 +106,13 @@
         ////////////////////////////////////////////////////////////////////////////////////////////
 
         PFObject* newGroup = [PFObject objectWithClassName:@"Group"]; //makes new group object
-        NSMutableArray* groupMembers = [[NSMutableArray alloc] initWithObjects:self.currentUser, nil];
-        newGroup[@"members"] = groupMembers; //adds ggroup with creator as only member
         newGroup[@"name"] = self.groupNameTextField.text;
+        PFRelation *relation = [newGroup relationforKey:@"membersRelation"]; //adds usr to the group's list of members
+        
+        [relation addObject:self.currentUser];
+        
+        ////////////////////////////////////////
+        
         [newGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) //newGroupCreated with initial member being current User
             {

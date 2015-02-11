@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "AcceptButton.h"
 
 @interface NotificationTableViewController : UITableViewController
 
@@ -17,5 +18,7 @@
 @property (strong, nonatomic) PFObject* pendingRequestBeingDisplayed;
 @property (strong, nonatomic) PFObject* tempGroup;
 @property (strong, nonatomic) PFObject* tempUser;
+
+@property (strong, nonatomic) PFUser* currentUser;
 
 @end
