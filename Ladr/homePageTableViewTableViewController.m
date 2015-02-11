@@ -83,6 +83,20 @@
 }
 
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath     *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    /////////////////////////////////////////////////
+    
+    /////////////////////////////////
+    long indexInt = indexPath.row;
+
+    [self performSegueWithIdentifier:@"showGroup" sender:self];
+    
+}
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -117,15 +131,18 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+     if ([[segue identifier] isEqualToString:@"showGroup"])
+     {
+         GroupTableViewController *groupViewController = [segue destinationViewController];
+         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+         groupViewController.currentGroup = [self.userGroups objectAtIndex:indexPath.row];
+     }
+ }
 
 #pragma mark - buttons
 - (void)addAction{

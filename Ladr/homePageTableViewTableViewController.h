@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+#import "GroupTableViewController.h"
+
 @interface homePageTableViewTableViewController : UITableViewController
 
 
