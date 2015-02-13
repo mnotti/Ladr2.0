@@ -13,6 +13,7 @@
 		4A4FB5261A8B4BBC009E97B7 /* AcceptButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4FB5251A8B4BBC009E97B7 /* AcceptButton.m */; };
 		4A59ABE71A8568E20035E531 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ABE61A8568E20035E531 /* AddGroupViewController.m */; };
 		4A60F1F81A88BF9800E2A0C4 /* NotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A60F1F71A88BF9800E2A0C4 /* NotificationTableViewController.m */; };
+		4A69B2891A8D7F3500026198 /* GroupViewCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A69B2881A8D7F3500026198 /* GroupViewCellTableViewCell.m */; };
 		4A6AF4E51A8C01B60015D09E /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6AF4E41A8C01B60015D09E /* GroupTableViewController.m */; };
 		4A9CC3621A847374006F8706 /* homePageTableViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */; };
 		4ABB3D251A7DE992001724D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D241A7DE992001724D5 /* main.m */; };
@@ -62,6 +63,8 @@
 		4A59ABE61A8568E20035E531 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
 		4A60F1F61A88BF9800E2A0C4 /* NotificationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewController.h; sourceTree = "<group>"; };
 		4A60F1F71A88BF9800E2A0C4 /* NotificationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewController.m; sourceTree = "<group>"; };
+		4A69B2871A8D7F3500026198 /* GroupViewCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewCellTableViewCell.h; sourceTree = "<group>"; };
+		4A69B2881A8D7F3500026198 /* GroupViewCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewCellTableViewCell.m; sourceTree = "<group>"; };
 		4A6AF4E31A8C01B60015D09E /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
 		4A6AF4E41A8C01B60015D09E /* GroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewController.m; sourceTree = "<group>"; };
 		4A9CC3601A847374006F8706 /* homePageTableViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homePageTableViewTableViewController.h; sourceTree = "<group>"; };
@@ -170,15 +173,17 @@
 				4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */,
 				4A9CC3601A847374006F8706 /* homePageTableViewTableViewController.h */,
 				4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */,
-				4A6AF4E31A8C01B60015D09E /* GroupTableViewController.h */,
-				4A6AF4E41A8C01B60015D09E /* GroupTableViewController.m */,
 				4A59ABE51A8568E20035E531 /* AddGroupViewController.h */,
 				4A59ABE61A8568E20035E531 /* AddGroupViewController.m */,
 				4A60F1F61A88BF9800E2A0C4 /* NotificationTableViewController.h */,
 				4A60F1F71A88BF9800E2A0C4 /* NotificationTableViewController.m */,
-				4ABB3D2F1A7DE992001724D5 /* Main.storyboard */,
 				4A4FB5241A8B4BBC009E97B7 /* AcceptButton.h */,
 				4A4FB5251A8B4BBC009E97B7 /* AcceptButton.m */,
+				4A6AF4E31A8C01B60015D09E /* GroupTableViewController.h */,
+				4A6AF4E41A8C01B60015D09E /* GroupTableViewController.m */,
+				4A69B2871A8D7F3500026198 /* GroupViewCellTableViewCell.h */,
+				4A69B2881A8D7F3500026198 /* GroupViewCellTableViewCell.m */,
+				4ABB3D2F1A7DE992001724D5 /* Main.storyboard */,
 				4ABB3D321A7DE992001724D5 /* Images.xcassets */,
 				4ABB3D341A7DE992001724D5 /* LaunchScreen.xib */,
 				4ABB3D291A7DE992001724D5 /* Ladr.xcdatamodeld */,
@@ -321,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ABB3D281A7DE992001724D5 /* AppDelegate.m in Sources */,
+				4A69B2891A8D7F3500026198 /* GroupViewCellTableViewCell.m in Sources */,
 				4ABB3D251A7DE992001724D5 /* main.m in Sources */,
 				4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */,
 				4A9CC3621A847374006F8706 /* homePageTableViewTableViewController.m in Sources */,

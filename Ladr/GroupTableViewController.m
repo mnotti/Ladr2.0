@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.rowHeight = 44;
     
     NSLog(@"%@", self.currentGroupName);
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
@@ -30,7 +31,9 @@
         else
         {
             self.currentGroup = object;
-            NSLog(@"members in this group are: %@", self.currentGroup[@"memberNames"]);
+            self.groupMembers = self.currentGroup[@"memberNames"];
+            NSLog(@"members in this group are: %@", self.groupMembers);
+            [self.tableView reloadData];
         }
     }];
     
@@ -51,24 +54,29 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    NSLog(@"groupMembers count = %lu", (unsigned long)[self.groupMembers count]);
+    return [self.groupMembers count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    GroupViewCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
+    cell.memberRank.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
+    cell.memberUsername.text = [self.groupMembers objectAtIndex:indexPath.row];
+    
+    
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
