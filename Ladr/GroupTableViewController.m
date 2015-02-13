@@ -112,14 +112,23 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"showReportScore"])
+    {
+        ReportGameViewController *reportViewController = [segue destinationViewController];
+        reportViewController.currentGroup = self.currentGroup;
+        NSMutableArray *opponents = self.groupMembers;
+        [opponents removeObject:[PFUser currentUser][@"username"]];
+        reportViewController.opponentsPotential = opponents;
+    }
+
+    
 }
-*/
+
 
 @end

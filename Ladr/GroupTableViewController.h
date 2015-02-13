@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "GroupViewCellTableViewCell.h"
+#import "ReportGameViewController.h"
 
 @interface GroupTableViewController : UITableViewController
 

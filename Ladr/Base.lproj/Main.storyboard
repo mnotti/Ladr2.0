@@ -57,11 +57,100 @@
                             <outlet property="delegate" destination="vyL-BM-FES" id="lg9-i7-kLu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="iMP-5D-peg"/>
+                    <navigationItem key="navigationItem" id="iMP-5D-peg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="S3V-By-S5U">
+                            <connections>
+                                <segue destination="4LL-N4-wsy" kind="push" identifier="showReportScore" id="Rfh-FB-Tp5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfJ-rr-2pS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2321" y="290"/>
+        </scene>
+        <!--Report Game View Controller-->
+        <scene sceneID="O1D-oW-sbO">
+            <objects>
+                <viewController id="4LL-N4-wsy" customClass="ReportGameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tgK-Ka-eMt"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kpa-J0-sxk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BXh-AM-Hxj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mqA-qF-fsm">
+                                <rect key="frame" x="0.0" y="77" width="320" height="491"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportGameOpponentCell" rowHeight="48" id="eAY-71-z3a">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eAY-71-z3a" id="jWA-y0-EWg">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4LL-N4-wsy" id="hmh-pR-D2x"/>
+                                    <outlet property="delegate" destination="4LL-N4-wsy" id="0om-e6-rr0"/>
+                                </connections>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wBM-sr-sJJ">
+                                <rect key="frame" x="16" y="106" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="9a9-fr-Spv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TAw-Ww-Ux0">
+                                <rect key="frame" x="207" y="106" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opponent's Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgv-hh-85s">
+                                <rect key="frame" x="164" y="77" width="140" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lw2-5H-VbB">
+                                <rect key="frame" x="16" y="77" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lw2-5H-VbB" firstAttribute="leading" secondItem="wBM-sr-sJJ" secondAttribute="leading" id="CNg-yk-KvY"/>
+                            <constraint firstItem="mqA-qF-fsm" firstAttribute="leading" secondItem="BXh-AM-Hxj" secondAttribute="leading" id="D8B-ej-u9i"/>
+                            <constraint firstItem="Mgv-hh-85s" firstAttribute="baseline" secondItem="lw2-5H-VbB" secondAttribute="baseline" id="O4t-eU-JJN"/>
+                            <constraint firstItem="wBM-sr-sJJ" firstAttribute="top" secondItem="BXh-AM-Hxj" secondAttribute="top" constant="106" id="SJG-aj-FLc"/>
+                            <constraint firstAttribute="bottom" secondItem="mqA-qF-fsm" secondAttribute="bottom" id="VGN-pF-eQf"/>
+                            <constraint firstItem="wBM-sr-sJJ" firstAttribute="leading" secondItem="BXh-AM-Hxj" secondAttribute="leadingMargin" id="VKS-vM-W3h"/>
+                            <constraint firstAttribute="trailing" secondItem="mqA-qF-fsm" secondAttribute="trailing" id="Y7x-xe-1XQ"/>
+                            <constraint firstItem="Mgv-hh-85s" firstAttribute="trailing" secondItem="TAw-Ww-Ux0" secondAttribute="trailing" id="acj-ie-JHr"/>
+                            <constraint firstItem="TAw-Ww-Ux0" firstAttribute="baseline" secondItem="wBM-sr-sJJ" secondAttribute="baseline" id="enT-s1-UeJ"/>
+                            <constraint firstItem="wBM-sr-sJJ" firstAttribute="top" secondItem="lw2-5H-VbB" secondAttribute="bottom" constant="8" symbolic="YES" id="ewm-nY-bQ9"/>
+                            <constraint firstItem="TAw-Ww-Ux0" firstAttribute="leading" secondItem="wBM-sr-sJJ" secondAttribute="trailing" constant="94" id="hH9-Dh-NRo"/>
+                            <constraint firstItem="Mgv-hh-85s" firstAttribute="trailing" secondItem="BXh-AM-Hxj" secondAttribute="trailingMargin" id="jbd-I8-k8Y"/>
+                            <constraint firstItem="mqA-qF-fsm" firstAttribute="top" secondItem="lw2-5H-VbB" secondAttribute="top" id="r0J-dC-Tsd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YaT-jr-AZL"/>
+                    <connections>
+                        <outlet property="opponentScoreField" destination="TAw-Ww-Ux0" id="755-m9-6ci"/>
+                        <outlet property="opponentsTableView" destination="mqA-qF-fsm" id="3wn-yY-iaj"/>
+                        <outlet property="yourScoreField" destination="wBM-sr-sJJ" id="Oji-pO-ogq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y1Z-Uk-OWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2759" y="290"/>
         </scene>
         <!--Home Page Table View Table View Controller-->
         <scene sceneID="Jh4-CU-cQf">
