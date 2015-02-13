@@ -108,6 +108,11 @@
     //adds the relation to the group's list of users
     PFRelation *relation = [self.tempGroups[but.row] relationforKey:@"membersRelation"];
     [relation addObject:self.currentUser];
+    
+    //adds the username of the user to the group's members Array for easy access to members
+    [self.tempGroups[but.row] addUniqueObject:self.currentUser[@"username"] forKey:@"memberNames"];
+
+    //update group
     [self.tempGroups[but.row] saveInBackground];
 
 

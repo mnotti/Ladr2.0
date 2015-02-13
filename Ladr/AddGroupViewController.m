@@ -107,7 +107,9 @@
 
         PFObject* newGroup = [PFObject objectWithClassName:@"Group"]; //makes new group object
         newGroup[@"name"] = self.groupNameTextField.text;
-        PFRelation *relation = [newGroup relationforKey:@"membersRelation"]; //adds usr to the group's list of members
+        NSArray* tempMembersArray = [[NSArray alloc] initWithObjects:self.currentUser[@"username"], nil];
+        newGroup[@"memberNames"] = tempMembersArray;
+        PFRelation *relation = [newGroup relationForKey:@"membersRelation"]; //adds usr to the group's list of members
         
         [relation addObject:self.currentUser];
         

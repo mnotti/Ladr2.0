@@ -17,7 +17,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%@", self.currentGroup);
+    NSLog(@"%@", self.currentGroupName);
+    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+    [query whereKey:@"name" equalTo:self.currentGroupName];
+    [query whereKey:@"membersRelation" equalTo:[PFUser currentUser]];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (error)
+        {
+            NSLog(@"something went wrong, query could not find group selected");
+            
+        }
+        else
+        {
+            self.currentGroup = object;
+            NSLog(@"members in this group are: %@", self.currentGroup[@"memberNames"]);
+        }
+    }];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

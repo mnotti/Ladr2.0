@@ -140,7 +140,7 @@
      {
          GroupTableViewController *groupViewController = [segue destinationViewController];
          NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-         groupViewController.currentGroup = [self.userGroups objectAtIndex:indexPath.row];
+         groupViewController.currentGroupName = [self.userGroups objectAtIndex:indexPath.row];
      }
  }
 

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface GroupTableViewController : UITableViewController
 
-@property (nonatomic, strong) NSString* currentGroup;
+@property (nonatomic, strong) NSString* currentGroupName;
+@property (nonatomic, strong) PFObject* currentGroup;
 
 @end
