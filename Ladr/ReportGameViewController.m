@@ -14,6 +14,16 @@
 
 @implementation ReportGameViewController
 
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:(BOOL)animated];
+    self.indicesDisplayed = [[NSMutableArray alloc]init];
+    self.opponentsPotentialData = [[NSMutableArray alloc] initWithArray:self.opponentsPotentialData];
+    
+    //currentUserHasNotBeenPassedInTableView
+    currentUserPassedFlag = false;
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,7 +53,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Number of rows is the number of time zones in the region for the specified section.
-    return [self.opponentsPotential count];
+    return (([self.opponentsPotentialData count] / 4) - 1); // removing 1 because one is the user
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath     *)indexPath
@@ -97,7 +107,23 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         
     }
-    cell.textLabel.text = self.opponentsPotential[indexPath.row];
+    if ([self.opponentsPotentialData[(indexPath.row * 4)] isEqualToString: ([PFUser currentUser][@"username"])])
+        {
+            currentUserPassedFlag = true;
+            indexOfUser = indexPath.row * 4;
+        }
+    if (currentUserPassedFlag)
+    {
+        cell.textLabel.text = self.opponentsPotentialData[(indexPath.row * 4) + 4];
+        [self.indicesDisplayed addObject:@((indexPath.row * 4) + 4)];
+  
+    }
+    else
+    {
+        cell.textLabel.text = self.opponentsPotentialData[(indexPath.row * 4)];
+        [self.indicesDisplayed addObject:@(indexPath.row * 4)];
+
+    }
     return cell;
 }
 
@@ -106,6 +132,113 @@
     [self.opponentScoreField resignFirstResponder];
 
     
+}
+- (IBAction)reportGameButtonPressed:(id)sender {
+    if (rowWithSelectedCell == -1)
+    {
+        UIAlertView* alert1 = [[UIAlertView alloc] initWithTitle:@"Cmon dude" message:@"You gots to select an opponent!" delegate:self cancelButtonTitle:@"OK I'll try to suck less" otherButtonTitles: nil];
+        [alert1 show];
+    }
+    else if ([self.opponentScoreField.text isEqualToString: @""] || [self.opponentScoreField.text isEqualToString: @""])
+    {
+        UIAlertView* alert2 = [[UIAlertView alloc] initWithTitle:@"Cmon dude" message:@"You gots to enter scores!" delegate:self cancelButtonTitle:@"OK I'll try to suck less" otherButtonTitles: nil];
+        [alert2 show];
+    }
+    else
+    {
+        NSNumber* tempOppIndex = self.indicesDisplayed[rowWithSelectedCell];
+        long tempOppIndexLong = [tempOppIndex longValue];
+        
+        
+        
+        NSLog(@"USER WITH ROW SELECTED IS %@", self.opponentsPotentialData[tempOppIndexLong]);
+        
+        NSNumber* opponentOldRating = self.opponentsPotentialData[tempOppIndexLong + 1];
+        NSNumber* userOldRating = self.opponentsPotentialData[[self.opponentsPotentialData indexOfObject:[PFUser currentUser][@"username"]]+ 1];
+        
+        //long indexOfUser = [self.opponentsPotentialData indexOfObject:[PFUser currentUser][@"username"]];
+        indexOfUser = [self.opponentsPotentialData indexOfObject:[PFUser currentUser][@"username"]];
+        long indexOfOpponent = tempOppIndexLong;
+
+        NSLog(@"opponent: %@", opponentOldRating);
+        NSLog(@"user: %@",userOldRating);
+        if ([self.opponentScoreField.text intValue] > [self.yourScoreField.text intValue]) //if user loses
+        {
+            //WINS, LOSSES
+            NSNumber *tempOppWins = self.opponentsPotentialData[indexOfOpponent + 2];
+            float newOppWins = [tempOppWins floatValue] + 1;
+            NSNumber *tempUserLosses = self.opponentsPotentialData[indexOfUser + 3];
+            float newUserLosses = [tempUserLosses floatValue] + 1;
+            
+            [self.opponentsPotentialData replaceObjectAtIndex:(indexOfUser + 3) withObject:[NSNumber numberWithFloat: newUserLosses]];
+            [self.opponentsPotentialData replaceObjectAtIndex:(indexOfOpponent + 2) withObject:[NSNumber numberWithFloat:newOppWins]];
+            
+            //RATINGS
+            NSNumber *tempUserRating = self.opponentsPotentialData[indexOfUser + 1];
+            NSNumber *tempOppRating = self.opponentsPotentialData[indexOfOpponent + 1];
+            float newUserRating;
+            float newOppRating;
+            if ([tempUserRating floatValue] < [tempOppRating floatValue])
+            {
+                newUserRating = [tempUserRating floatValue] - 25;
+                newOppRating = [tempOppRating floatValue] + 25;
+            }
+            else
+            {
+                newUserRating = [tempOppRating floatValue] - 25;
+                newOppRating = [tempUserRating floatValue] + 25;
+            }
+            [self.opponentsPotentialData replaceObjectAtIndex:indexOfUser + 1 withObject:[NSNumber numberWithFloat: newUserRating]];
+            [self.opponentsPotentialData replaceObjectAtIndex:indexOfOpponent + 1 withObject:[NSNumber numberWithFloat:newOppRating]];
+            
+            self.currentGroup[@"memberData"] = self.opponentsPotentialData;
+            [self.currentGroup saveInBackground];
+        }
+        else if ([self.opponentScoreField.text intValue] < [self.yourScoreField.text intValue])//if user wins
+        {
+            //WINS, LOSSES
+            NSNumber *tempUserWins = self.opponentsPotentialData[indexOfUser + 2];
+            float newUserWins = [tempUserWins floatValue] + 1;
+            NSNumber *tempOppLosses = self.opponentsPotentialData[indexOfOpponent + 3];
+            float newOppLosses = [tempOppLosses floatValue] + 1;
+            
+            [self.opponentsPotentialData replaceObjectAtIndex:(indexOfOpponent + 3) withObject:[NSNumber numberWithFloat: newOppLosses]];
+            [self.opponentsPotentialData replaceObjectAtIndex:(indexOfUser + 2) withObject:[NSNumber numberWithFloat:newUserWins]];
+            
+            //RATINGS
+            NSNumber *tempUserRating = self.opponentsPotentialData[indexOfUser + 1];
+            NSNumber *tempOppRating = self.opponentsPotentialData[indexOfOpponent + 1];
+            float newUserRating;
+            float newOppRating;
+            if ([tempUserRating floatValue] < [tempOppRating floatValue])
+            {
+                newUserRating = [tempOppRating floatValue] + 25;
+                newOppRating = [tempUserRating floatValue] - 25;
+            }
+            else
+            {
+                newUserRating = [tempUserRating floatValue] + 25;
+                newOppRating = [tempOppRating floatValue] - 25;
+            }
+            [self.opponentsPotentialData replaceObjectAtIndex:indexOfUser + 1 withObject:[NSNumber numberWithFloat: newUserRating]];
+            [self.opponentsPotentialData replaceObjectAtIndex:indexOfOpponent + 1 withObject:[NSNumber numberWithFloat:newOppRating]];
+
+            
+
+            
+            self.currentGroup[@"memberData"] = self.opponentsPotentialData;
+            [self.currentGroup saveInBackground];
+        }
+
+        
+        [self.navigationController popViewControllerAnimated:YES];
+
+    }
+}
+#pragma mark - algorithms
+-(NSNumber*) calculateNewRating: (NSNumber*)oldRating forOpponent: (NSNumber*)opponentRating
+{
+    return 0;
 }
 
 /*

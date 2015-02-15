@@ -110,7 +110,17 @@
     [relation addObject:self.currentUser];
     
     //adds the username of the user to the group's members Array for easy access to members
-    [self.tempGroups[but.row] addUniqueObject:self.currentUser[@"username"] forKey:@"memberNames"];
+//    [self.tempGroups[but.row] addUniqueObject:self.currentUser[@"username"] forKey:@"memberData"];
+//    [self.tempGroups[but.row] addObject:@500 forKey:@"memberData"];
+//    [self.tempGroups[but.row] addObject:@0 forKey:@"memberData"];
+//    [self.tempGroups[but.row] addObject:@0 forKey:@"memberData"];
+    NSMutableArray* tempGroupToAddTo = self.tempGroups[but.row][@"memberData"];
+    [tempGroupToAddTo addObject:self.currentUser[@"username"]];
+    [tempGroupToAddTo addObject:@500 ];
+    [tempGroupToAddTo addObject:@0 ];
+    [tempGroupToAddTo addObject:@0];
+    self.tempGroups[but.row][@"memberData"] = tempGroupToAddTo;
+
 
     //update group
     [self.tempGroups[but.row] saveInBackground];

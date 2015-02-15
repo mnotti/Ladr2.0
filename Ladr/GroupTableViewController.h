@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) NSString* currentGroupName; //name that is transferred from the previous view
 
-@property (nonatomic, strong) NSMutableArray* groupMembers; //mutable because it might change while the user is viewing the group
+@property (nonatomic, strong) NSArray* groupMembersData; //mutable because it might change while the user is viewing the group
 
 @property (nonatomic, strong) PFObject* currentGroup; //queried for in viewDidLoad
 

@@ -141,7 +141,13 @@
                             <constraint firstItem="mqA-qF-fsm" firstAttribute="top" secondItem="lw2-5H-VbB" secondAttribute="top" id="r0J-dC-Tsd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YaT-jr-AZL"/>
+                    <navigationItem key="navigationItem" id="YaT-jr-AZL">
+                        <barButtonItem key="rightBarButtonItem" title="Report!" id="apI-Ok-9Sb">
+                            <connections>
+                                <action selector="reportGameButtonPressed:" destination="4LL-N4-wsy" id="Glj-V8-2II"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="opponentScoreField" destination="TAw-Ww-Ux0" id="755-m9-6ci"/>
                         <outlet property="opponentsTableView" destination="mqA-qF-fsm" id="3wn-yY-iaj"/>

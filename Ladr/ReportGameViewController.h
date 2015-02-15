@@ -12,16 +12,23 @@
 @interface ReportGameViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     long rowWithSelectedCell;
+    long indexOfUser;
+    BOOL currentUserPassedFlag;
 }
 
 @property (nonatomic, strong) PFObject* currentGroup;
 
-@property (nonatomic, strong) NSArray* opponentsPotential;
+@property (nonatomic, strong) NSMutableArray* opponentsPotentialData;
+@property (nonatomic, strong) NSMutableArray* indicesDisplayed;
+
+
 
 @property (weak, nonatomic) IBOutlet UITextField *opponentScoreField;
 @property (weak, nonatomic) IBOutlet UITextField *yourScoreField;
 
 @property (weak, nonatomic) IBOutlet UITableView *opponentsTableView;
+
+
 
 
 @end
