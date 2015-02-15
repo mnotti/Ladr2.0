@@ -35,17 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSLog(@"TESTING THE MERGE SORT::::::");
-//    NSArray* unsortedArray = [[NSArray alloc] initWithObjects:@"markus", @270, @2, @4, @"bob", @420, @4, @5, @"the worst", @220, @1, @5, @"swag", @700, @7, @5, @"The best", @900, @10, @0, @"ALSO the worst", @220, @1, @6, @"not as swag", @600, @7, @6, @"second best", @890, @9, @1,  nil];
-//    NSArray* sorted = [self mergeSort:unsortedArray];
-//    NSLog(@"SORTED ARRAY BE LIKE: %@", sorted);
-    
-    //testing if we can access groups
-//    PFUser* currentUser = [PFUser currentUser];
-//    
-//    self.userGroups = currentUser[@"groups"];
-//    NSLog(@"%@", [self.userGroups objectAtIndex:0]);
-    //testing over
     
     
     

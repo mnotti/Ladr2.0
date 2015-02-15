@@ -69,6 +69,7 @@
                                                     if (user) {
                                                         // Do stuff after successful login.
                                                         NSLog(@"login successful!");
+                                                        [self dismissKeyboard];
                                                         
                                                         //NAVIGATE TO THE HOME PAGE
                                                         AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
