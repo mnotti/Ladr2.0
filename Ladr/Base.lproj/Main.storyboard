@@ -57,17 +57,63 @@
                             <outlet property="delegate" destination="vyL-BM-FES" id="lg9-i7-kLu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="iMP-5D-peg">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="S3V-By-S5U">
-                            <connections>
-                                <segue destination="4LL-N4-wsy" kind="push" identifier="showReportScore" id="Rfh-FB-Tp5"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="iMP-5D-peg"/>
+                    <connections>
+                        <outlet property="navBar" destination="iMP-5D-peg" id="vxJ-8U-LTZ"/>
+                        <segue destination="4LL-N4-wsy" kind="push" identifier="showReportScore" id="UvN-eT-Igy"/>
+                        <segue destination="iw0-BL-Hf3" kind="push" identifier="showAddFriends" id="CzW-sq-u30"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfJ-rr-2pS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2829" y="292"/>
+        </scene>
+        <!--Add Friends To Group View Controller-->
+        <scene sceneID="wQU-tG-6Dw">
+            <objects>
+                <viewController id="iw0-BL-Hf3" customClass="AddFriendsToGroupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="goU-BR-V1l"/>
+                        <viewControllerLayoutGuide type="bottom" id="6AN-IW-ERb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UCW-og-I57">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pKL-py-zNN">
+                                <rect key="frame" x="0.0" y="28" width="320" height="540"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addFriendsTableCell" id="Mg2-IX-Edc">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mg2-IX-Edc" id="ZBS-e8-cz5">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="iw0-BL-Hf3" id="S45-2f-cSm"/>
+                                    <outlet property="delegate" destination="iw0-BL-Hf3" id="hpR-mw-JSa"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="A8h-e8-VBx">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="scL-lM-bnE">
+                            <connections>
+                                <action selector="doneButton:" destination="iw0-BL-Hf3" id="fVl-yC-Iaq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addFriendsTableView" destination="pKL-py-zNN" id="vrn-Io-owH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PJK-XE-ywt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3294" y="-323"/>
         </scene>
         <!--Report Game View Controller-->
         <scene sceneID="O1D-oW-sbO">

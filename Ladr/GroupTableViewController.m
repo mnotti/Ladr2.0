@@ -39,6 +39,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *reportScoreBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction)];
+    
+    UIBarButtonItem *addFriendsBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+ Friends" style:UIBarButtonItemStylePlain target:self action:@selector(addFriendsButton)];
+    
+    self.navBar.rightBarButtonItems = [[NSArray alloc] initWithObjects:reportScoreBarButtonItem, addFriendsBarButtonItem, nil];
+
     self.tableView.rowHeight = 44;
     
     
@@ -81,6 +87,14 @@
     return cell;
 }
 
+-(void) addAction{
+    [self performSegueWithIdentifier:@"showReportScore" sender:self];
+}
+
+-(void) addFriendsButton{
+    [self performSegueWithIdentifier:@"showAddFriends" sender:self];
+    
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -122,31 +136,17 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    ReportGameViewController *reportViewController = [segue destinationViewController];
     
     if ([[segue identifier] isEqualToString:@"showReportScore"])
     {
+        ReportGameViewController *reportViewController = [segue destinationViewController];
+
         if ([self.groupMembersData count] > 4){
         reportViewController.currentGroup = self.currentGroup;
             reportViewController.opponentsPotentialData = (NSMutableArray*) self.groupMembersData;
             
         
-//        NSMutableArray *opponentsData = self.groupMembersData;
-//        NSLog(@"opponentData before transition: %@", opponentsData);
-//        
-//        long indexToRemove = [opponentsData indexOfObject:[PFUser currentUser][@"username"]];
-//        [opponentsData removeObjectAtIndex:indexToRemove];
-//        
-//        [opponentsData removeObjectAtIndex:indexToRemove + 1];
-//        NSLog(@"index2: %ld", indexToRemove + 1);
-//
-//        [opponentsData removeObjectAtIndex:indexToRemove + 2];
-//         NSLog(@"index3: %ld", indexToRemove + 2);
-//        
-//        [opponentsData removeObjectAtIndex:indexToRemove + 3];
-//        NSLog(@"index4: %ld", indexToRemove + 3);
-//        
-//        reportViewController.opponentsPotentialData = opponentsData;
+
             
         }
         else{
@@ -155,6 +155,11 @@
 
             
         }
+    }
+    else if ([[segue identifier] isEqualToString:@"showAddFriends"])
+    {
+        AddFriendsToGroupViewController* addFriendsVC = [segue destinationViewController];
+        addFriendsVC.currentGroup = self.currentGroup;
     }
     
 

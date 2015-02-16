@@ -48,6 +48,7 @@
 		4ABB3D661A7DEAF4001724D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB3D651A7DEAF4001724D5 /* SystemConfiguration.framework */; };
 		4ABB3D681A7DEB01001724D5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB3D671A7DEB01001724D5 /* libz.dylib */; };
 		4ABB3D6A1A7DEB0F001724D5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB3D691A7DEB0F001724D5 /* libsqlite3.dylib */; };
+		4ADE26631A91A17D009C6A55 /* AddFriendsToGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,8 @@
 		4ABB3D651A7DEAF4001724D5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4ABB3D671A7DEB01001724D5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4ABB3D691A7DEB0F001724D5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4ADE26611A91A17D009C6A55 /* AddFriendsToGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsToGroupViewController.h; sourceTree = "<group>"; };
+		4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsToGroupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +210,8 @@
 				4A69B2881A8D7F3500026198 /* GroupViewCellTableViewCell.m */,
 				4A69B28A1A8D8EEE00026198 /* ReportGameViewController.h */,
 				4A69B28B1A8D8EEE00026198 /* ReportGameViewController.m */,
+				4ADE26611A91A17D009C6A55 /* AddFriendsToGroupViewController.h */,
+				4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */,
 				4A6017681A9092C800847F64 /* HomePageViewController.h */,
 				4A6017691A9092C800847F64 /* HomePageViewController.m */,
 				4A60176B1A90A86200847F64 /* SWRevealViewController.h */,
@@ -372,6 +377,7 @@
 				4A60176D1A90A86200847F64 /* SWRevealViewController.m in Sources */,
 				4A6017741A90C0BA00847F64 /* SettingsViewController.m in Sources */,
 				4A6017771A90C0CF00847F64 /* LicensesViewController.m in Sources */,
+				4ADE26631A91A17D009C6A55 /* AddFriendsToGroupViewController.m in Sources */,
 				4ABB3D251A7DE992001724D5 /* main.m in Sources */,
 				4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */,
 				4A60176A1A9092C800847F64 /* HomePageViewController.m in Sources */,

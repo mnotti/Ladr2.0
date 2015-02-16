@@ -30,11 +30,12 @@
     [self.view addGestureRecognizer:tap];
     
 
-    
+    //initialize arrays
     self.cellsSelected = [NSMutableArray array];
-    self.usersSelected = [[NSMutableArray alloc] init]; //initialize array
+    self.usersSelected = [[NSMutableArray alloc] init];
 
-    PFUser *currentUser = [PFUser currentUser]; //setup and initialize current user
+    //setup and initialize current user
+    PFUser *currentUser = [PFUser currentUser];
     self.currentUser = currentUser;
 
     if (currentUser[@"groups"]) //if user is in groups already
@@ -94,7 +95,7 @@
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Try a New Name" message:@"You are already in a group with that name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
         [alert show];
     }
-    
+        
     
     else //if group is ready to be added
     {

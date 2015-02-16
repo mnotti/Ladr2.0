@@ -10,13 +10,16 @@
 #import <Parse/Parse.h>
 #import "GroupViewCellTableViewCell.h"
 #import "ReportGameViewController.h"
+#import "AddFriendsToGroupViewController.h"
 
 @interface GroupTableViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 
 @property (nonatomic, strong) NSString* currentGroupName; //name that is transferred from the previous view
 
 @property (nonatomic, strong) NSArray* groupMembersData; //mutable because it might change while the user is viewing the group
 
 @property (nonatomic, strong) PFObject* currentGroup; //queried for in viewDidLoad
+
 
 @end
