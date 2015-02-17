@@ -37,7 +37,6 @@
                                    action:@selector(dismissKeyboard)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,13 +59,11 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    /////////////////////////////////////////////////
-    
-    /////////////////////////////////
+
     long indexInt = indexPath.row;
     
     
-    //if (cell.accessoryType == UITableViewCellAccessoryNone) //if there's no check
+   //if there's no check
     if (!rowWithSelectedCell == indexInt)
     {
         rowWithSelectedCell = indexInt;
@@ -94,9 +91,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"reportGameOpponentCell";
     UITableViewCell *cell = [self.opponentsTableView dequeueReusableCellWithIdentifier:MyIdentifier];
-    //    if (cell == nil) {
-    //        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier]];
-    //    }
     
     if (rowWithSelectedCell == indexPath.row)
     {
@@ -156,7 +150,6 @@
         NSNumber* opponentOldRating = self.opponentsPotentialData[tempOppIndexLong + 1];
         NSNumber* userOldRating = self.opponentsPotentialData[[self.opponentsPotentialData indexOfObject:[PFUser currentUser][@"username"]]+ 1];
         
-        //long indexOfUser = [self.opponentsPotentialData indexOfObject:[PFUser currentUser][@"username"]];
         indexOfUser = [self.opponentsPotentialData indexOfObject:[PFUser currentUser][@"username"]];
         long indexOfOpponent = tempOppIndexLong;
 
@@ -176,20 +169,17 @@
             //RATINGS
             NSNumber *tempUserRating = self.opponentsPotentialData[indexOfUser + 1];
             NSNumber *tempOppRating = self.opponentsPotentialData[indexOfOpponent + 1];
-            float newUserRating;
-            float newOppRating;
-            if ([tempUserRating floatValue] < [tempOppRating floatValue])
-            {
-                newUserRating = [tempUserRating floatValue] - 25;
-                newOppRating = [tempOppRating floatValue] + 25;
-            }
-            else
-            {
-                newUserRating = [tempOppRating floatValue] - 25;
-                newOppRating = [tempUserRating floatValue] + 25;
-            }
-            [self.opponentsPotentialData replaceObjectAtIndex:indexOfUser + 1 withObject:[NSNumber numberWithFloat: newUserRating]];
-            [self.opponentsPotentialData replaceObjectAtIndex:indexOfOpponent + 1 withObject:[NSNumber numberWithFloat:newOppRating]];
+            
+            long oldUserRating = [tempUserRating longValue];
+            long oldOppRating = [tempOppRating longValue];
+            
+            long ratings[2] = {oldOppRating, oldUserRating};
+            [self ratingsTest:ratings];
+            
+            [self.opponentsPotentialData replaceObjectAtIndex:indexOfUser + 1 withObject:[NSNumber numberWithLong: ratings[1]]];
+            [self.opponentsPotentialData replaceObjectAtIndex:indexOfOpponent + 1 withObject:[NSNumber numberWithLong:ratings[0]]];
+            
+            
             
             self.currentGroup[@"memberData"] = self.opponentsPotentialData;
             [self.currentGroup saveInBackground];
@@ -206,24 +196,19 @@
             [self.opponentsPotentialData replaceObjectAtIndex:(indexOfUser + 2) withObject:[NSNumber numberWithFloat:newUserWins]];
             
             //RATINGS
+            
+            
             NSNumber *tempUserRating = self.opponentsPotentialData[indexOfUser + 1];
             NSNumber *tempOppRating = self.opponentsPotentialData[indexOfOpponent + 1];
-            float newUserRating;
-            float newOppRating;
-            if ([tempUserRating floatValue] < [tempOppRating floatValue])
-            {
-                newUserRating = [tempOppRating floatValue] + 25;
-                newOppRating = [tempUserRating floatValue] - 25;
-            }
-            else
-            {
-                newUserRating = [tempUserRating floatValue] + 25;
-                newOppRating = [tempOppRating floatValue] - 25;
-            }
-            [self.opponentsPotentialData replaceObjectAtIndex:indexOfUser + 1 withObject:[NSNumber numberWithFloat: newUserRating]];
-            [self.opponentsPotentialData replaceObjectAtIndex:indexOfOpponent + 1 withObject:[NSNumber numberWithFloat:newOppRating]];
-
             
+            long oldUserRating = [tempUserRating longValue];
+            long oldOppRating = [tempOppRating longValue];
+            
+            long ratings[2] = {oldUserRating, oldOppRating};
+            [self ratingsTest:ratings];
+            
+            [self.opponentsPotentialData replaceObjectAtIndex:indexOfUser + 1 withObject:[NSNumber numberWithLong: ratings[0]]];
+            [self.opponentsPotentialData replaceObjectAtIndex:indexOfOpponent + 1 withObject:[NSNumber numberWithLong:ratings[1]]];
 
             
             self.currentGroup[@"memberData"] = self.opponentsPotentialData;
@@ -236,9 +221,75 @@
     }
 }
 #pragma mark - algorithms
--(NSNumber*) calculateNewRating: (NSNumber*)oldRating forOpponent: (NSNumber*)opponentRating
-{
-    return 0;
+-(void) ratingsTest:(long*)previousRatings{
+    //long previousRatings[20] = {100, 150, 200, 250, 300, 350, 400, 200, 200, 400, 700, 500,400, 300, 400, 200, 400, 400, 400, 350};
+    //for (int i = 0; i < 20; i += 2)
+    //{
+    long k = 25;
+    long winnerRating = previousRatings[0];
+    long loserRating = previousRatings[1];
+    long diff = winnerRating - loserRating;
+    
+    long newWinnerRating;
+    long newLoserRating;
+    if (winnerRating >= loserRating){
+        if (diff < 100 && diff >= 0)
+        {
+            newLoserRating = loserRating - k;
+            newWinnerRating = winnerRating + k;
+        }
+        else if (diff < 200 && diff >= 100)
+        {
+            newLoserRating = loserRating - 0.5*k;
+            newWinnerRating = winnerRating + 0.5*k;
+        }
+        else if (diff < 300 && diff >= 200)
+        {
+            newLoserRating = loserRating - 0.25*k;
+            newWinnerRating = winnerRating + 0.25*k;
+        }
+        else
+        {
+            newLoserRating = loserRating - 0.125*k;
+            newWinnerRating = winnerRating + 0.125*k;
+        }
+        
+    }
+    else if (winnerRating < loserRating)
+    {
+        if (-diff < 100 && -diff >= 0)
+        {
+            newLoserRating = loserRating - k;
+            newWinnerRating = winnerRating + k;
+        }
+        else if (-diff < 200 && -diff >= 100)
+        {
+            newLoserRating = loserRating - 2*k;
+            newWinnerRating = winnerRating + 2*k;
+        }
+        else if (-diff < 300 && -diff >= 200)
+        {
+            newLoserRating = loserRating - 3*k;
+            newWinnerRating = winnerRating + 3*k;
+        }
+        else
+        {
+            newLoserRating = loserRating - 4*k;
+            newWinnerRating = winnerRating + 4*k;
+        }
+    }
+    else
+    {
+        newWinnerRating = 25 + winnerRating;
+        newLoserRating = loserRating - 25;
+    }
+    NSLog(@"user wins: rating goes from %ld to %ld", winnerRating, newWinnerRating);
+    NSLog(@"opp loses: rating goes from %ld to %ld", loserRating, newLoserRating);
+    previousRatings[0] = newWinnerRating;
+    previousRatings[1] = newLoserRating;
+    
+    
+    // }
 }
 
 /*

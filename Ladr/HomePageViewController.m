@@ -8,6 +8,8 @@
 
 #import "HomePageViewController.h"
 
+
+
 @interface HomePageViewController ()
 
 @end
@@ -28,6 +30,14 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //FB LOGIN
+//    FBLoginView *loginView = [[FBLoginView alloc] init];
+//    loginView.center = self.view.center;
+//    [self.view addSubview:loginView];
+    
+    //for testing of ratings
+
+   
     
     UIBarButtonItem *addGroupBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction)];
     
@@ -67,6 +77,77 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void) ratingsTest:(long*)previousRatings{
+    //long previousRatings[20] = {100, 150, 200, 250, 300, 350, 400, 200, 200, 400, 700, 500,400, 300, 400, 200, 400, 400, 400, 350};
+    //for (int i = 0; i < 20; i += 2)
+    //{
+        long k = 25;
+        long winnerRating = previousRatings[0];
+        long loserRating = previousRatings[1];
+        long diff = winnerRating - loserRating;
+        
+        long newWinnerRating;
+        long newLoserRating;
+        if (winnerRating >= loserRating){
+           if (diff < 100 && diff >= 0)
+           {
+               newLoserRating = loserRating - k;
+               newWinnerRating = winnerRating + k;
+           }
+            else if (diff < 200 && diff >= 100)
+            {
+                newLoserRating = loserRating - 0.5*k;
+                newWinnerRating = winnerRating + 0.5*k;
+            }
+            else if (diff < 300 && diff >= 200)
+            {
+                newLoserRating = loserRating - 0.25*k;
+                newWinnerRating = winnerRating + 0.25*k;
+            }
+            else
+            {
+                newLoserRating = loserRating - 0.125*k;
+                newWinnerRating = winnerRating + 0.125*k;
+            }
+            
+        }
+        else if (winnerRating < loserRating)
+        {
+            if (-diff < 100 && -diff >= 0)
+            {
+                newLoserRating = loserRating - k;
+                newWinnerRating = winnerRating + k;
+            }
+            else if (-diff < 200 && -diff >= 100)
+            {
+                newLoserRating = loserRating - 2*k;
+                newWinnerRating = winnerRating + 2*k;
+            }
+            else if (-diff < 300 && -diff >= 200)
+            {
+                newLoserRating = loserRating - 3*k;
+                newWinnerRating = winnerRating + 3*k;
+            }
+            else
+            {
+                newLoserRating = loserRating - 4*k;
+                newWinnerRating = winnerRating + 4*k;
+            }
+        }
+        else
+        {
+            newWinnerRating = 25 + winnerRating;
+            newLoserRating = loserRating - 25;
+        }
+        NSLog(@"user wins: rating goes from %ld to %ld", winnerRating, newWinnerRating);
+        NSLog(@"opp loses: rating goes from %ld to %ld", loserRating, newLoserRating);
+    previousRatings[0] = newWinnerRating;
+    previousRatings[1] = newLoserRating;
+    
+        
+   // }
 }
 
 

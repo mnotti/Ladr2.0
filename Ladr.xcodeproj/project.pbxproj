@@ -48,6 +48,7 @@
 		4ABB3D661A7DEAF4001724D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB3D651A7DEAF4001724D5 /* SystemConfiguration.framework */; };
 		4ABB3D681A7DEB01001724D5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB3D671A7DEB01001724D5 /* libz.dylib */; };
 		4ABB3D6A1A7DEB0F001724D5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB3D691A7DEB0F001724D5 /* libsqlite3.dylib */; };
+		4AD2A4871A9302A4005FB377 /* AddInitialFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD2A4861A9302A4005FB377 /* AddInitialFriendsViewController.m */; };
 		4ADE26631A91A17D009C6A55 /* AddFriendsToGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -106,11 +107,11 @@
 		4ABB3D3B1A7DE992001724D5 /* LadrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LadrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABB3D401A7DE992001724D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ABB3D411A7DE992001724D5 /* LadrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LadrTests.m; sourceTree = "<group>"; };
-		4ABB3D4B1A7DEA4A001724D5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		4ABB3D4C1A7DEA4A001724D5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		4ABB3D4D1A7DEA4A001724D5 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
-		4ABB3D4E1A7DEA4A001724D5 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		4ABB3D4F1A7DEA4A001724D5 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		4ABB3D4B1A7DEA4A001724D5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Ladr/Bolts.framework; sourceTree = "<group>"; };
+		4ABB3D4C1A7DEA4A001724D5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Ladr/Parse.framework; sourceTree = "<group>"; };
+		4ABB3D4D1A7DEA4A001724D5 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Ladr/ParseCrashReporting.framework; sourceTree = "<group>"; };
+		4ABB3D4E1A7DEA4A001724D5 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = Ladr/ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		4ABB3D4F1A7DEA4A001724D5 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = Ladr/ParseUI.framework; sourceTree = "<group>"; };
 		4ABB3D551A7DEAB5001724D5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4ABB3D571A7DEABB001724D5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4ABB3D591A7DEAC1001724D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +123,8 @@
 		4ABB3D651A7DEAF4001724D5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4ABB3D671A7DEB01001724D5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4ABB3D691A7DEB0F001724D5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4AD2A4851A9302A4005FB377 /* AddInitialFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddInitialFriendsViewController.h; sourceTree = "<group>"; };
+		4AD2A4861A9302A4005FB377 /* AddInitialFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInitialFriendsViewController.m; sourceTree = "<group>"; };
 		4ADE26611A91A17D009C6A55 /* AddFriendsToGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsToGroupViewController.h; sourceTree = "<group>"; };
 		4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsToGroupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,17 +166,7 @@
 		4ABB3D161A7DE992001724D5 = {
 			isa = PBXGroup;
 			children = (
-				4ABB3D691A7DEB0F001724D5 /* libsqlite3.dylib */,
-				4ABB3D671A7DEB01001724D5 /* libz.dylib */,
-				4ABB3D651A7DEAF4001724D5 /* SystemConfiguration.framework */,
-				4ABB3D631A7DEAE9001724D5 /* StoreKit.framework */,
-				4ABB3D611A7DEAE3001724D5 /* Security.framework */,
-				4ABB3D5F1A7DEADD001724D5 /* QuartzCore.framework */,
-				4ABB3D5D1A7DEAD5001724D5 /* MobileCoreServices.framework */,
-				4ABB3D5B1A7DEACC001724D5 /* CoreLocation.framework */,
-				4ABB3D591A7DEAC1001724D5 /* CoreGraphics.framework */,
-				4ABB3D571A7DEABB001724D5 /* CFNetwork.framework */,
-				4ABB3D551A7DEAB5001724D5 /* AudioToolbox.framework */,
+				4AD2A4841A92F847005FB377 /* Frameworks */,
 				4ABB3D211A7DE992001724D5 /* Ladr */,
 				4ABB3D3E1A7DE992001724D5 /* LadrTests */,
 				4ABB3D201A7DE992001724D5 /* Products */,
@@ -192,36 +185,18 @@
 		4ABB3D211A7DE992001724D5 /* Ladr */ = {
 			isa = PBXGroup;
 			children = (
-				4ABB3D261A7DE992001724D5 /* AppDelegate.h */,
-				4ABB3D271A7DE992001724D5 /* AppDelegate.m */,
-				4A30ECC61A82004B00E276C7 /* LoginViewController.h */,
-				4A30ECC71A82004B00E276C7 /* LoginViewController.m */,
-				4A30ECC91A82005B00E276C7 /* SignUpViewController.h */,
-				4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */,
-				4A59ABE51A8568E20035E531 /* AddGroupViewController.h */,
-				4A59ABE61A8568E20035E531 /* AddGroupViewController.m */,
-				4A60F1F61A88BF9800E2A0C4 /* NotificationTableViewController.h */,
-				4A60F1F71A88BF9800E2A0C4 /* NotificationTableViewController.m */,
-				4A4FB5241A8B4BBC009E97B7 /* AcceptButton.h */,
-				4A4FB5251A8B4BBC009E97B7 /* AcceptButton.m */,
-				4A6AF4E31A8C01B60015D09E /* GroupTableViewController.h */,
-				4A6AF4E41A8C01B60015D09E /* GroupTableViewController.m */,
-				4A69B2871A8D7F3500026198 /* GroupViewCellTableViewCell.h */,
-				4A69B2881A8D7F3500026198 /* GroupViewCellTableViewCell.m */,
-				4A69B28A1A8D8EEE00026198 /* ReportGameViewController.h */,
-				4A69B28B1A8D8EEE00026198 /* ReportGameViewController.m */,
-				4ADE26611A91A17D009C6A55 /* AddFriendsToGroupViewController.h */,
-				4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */,
+				4AD2A0C21A92CD41005FB377 /* delegate */,
+				4AD2A0C31A92CD51005FB377 /* login/signup */,
+				4AD2A0C41A92CD6A005FB377 /* notification stuff */,
+				4AD2A0C51A92CDA7005FB377 /* LeftSidePanelStuff */,
+				4AD2A0C61A92CDE1005FB377 /* GroupView */,
+				4AD2A0C71A92CDF3005FB377 /* Misc Views */,
 				4A6017681A9092C800847F64 /* HomePageViewController.h */,
 				4A6017691A9092C800847F64 /* HomePageViewController.m */,
-				4A60176B1A90A86200847F64 /* SWRevealViewController.h */,
-				4A60176C1A90A86200847F64 /* SWRevealViewController.m */,
-				4A6017651A90907700847F64 /* PanelViewController.h */,
-				4A6017661A90907700847F64 /* PanelViewController.m */,
-				4A6017721A90C0BA00847F64 /* SettingsViewController.h */,
-				4A6017731A90C0BA00847F64 /* SettingsViewController.m */,
-				4A6017751A90C0CF00847F64 /* LicensesViewController.h */,
-				4A6017761A90C0CF00847F64 /* LicensesViewController.m */,
+				4A59ABE51A8568E20035E531 /* AddGroupViewController.h */,
+				4A59ABE61A8568E20035E531 /* AddGroupViewController.m */,
+				4AD2A4851A9302A4005FB377 /* AddInitialFriendsViewController.h */,
+				4AD2A4861A9302A4005FB377 /* AddInitialFriendsViewController.m */,
 				4ABB3D2F1A7DE992001724D5 /* Main.storyboard */,
 				4ABB3D321A7DE992001724D5 /* Images.xcassets */,
 				4ABB3D341A7DE992001724D5 /* LaunchScreen.xib */,
@@ -239,11 +214,6 @@
 				4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */,
 				4A60176E1A90B8CF00847F64 /* cat.jpg */,
 				4A6017701A90BA7B00847F64 /* pic.jpg */,
-				4ABB3D4B1A7DEA4A001724D5 /* Bolts.framework */,
-				4ABB3D4C1A7DEA4A001724D5 /* Parse.framework */,
-				4ABB3D4D1A7DEA4A001724D5 /* ParseCrashReporting.framework */,
-				4ABB3D4E1A7DEA4A001724D5 /* ParseFacebookUtils.framework */,
-				4ABB3D4F1A7DEA4A001724D5 /* ParseUI.framework */,
 				4ABB3D231A7DE992001724D5 /* Info.plist */,
 				4ABB3D241A7DE992001724D5 /* main.m */,
 			);
@@ -266,6 +236,97 @@
 				4A30ECC41A81FAB400E276C7 /* ladrLogo1.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4AD2A0C21A92CD41005FB377 /* delegate */ = {
+			isa = PBXGroup;
+			children = (
+				4ABB3D261A7DE992001724D5 /* AppDelegate.h */,
+				4ABB3D271A7DE992001724D5 /* AppDelegate.m */,
+			);
+			name = delegate;
+			sourceTree = "<group>";
+		};
+		4AD2A0C31A92CD51005FB377 /* login/signup */ = {
+			isa = PBXGroup;
+			children = (
+				4A30ECC61A82004B00E276C7 /* LoginViewController.h */,
+				4A30ECC71A82004B00E276C7 /* LoginViewController.m */,
+				4A30ECC91A82005B00E276C7 /* SignUpViewController.h */,
+				4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */,
+			);
+			name = login/signup;
+			sourceTree = "<group>";
+		};
+		4AD2A0C41A92CD6A005FB377 /* notification stuff */ = {
+			isa = PBXGroup;
+			children = (
+				4A60F1F61A88BF9800E2A0C4 /* NotificationTableViewController.h */,
+				4A60F1F71A88BF9800E2A0C4 /* NotificationTableViewController.m */,
+				4A4FB5241A8B4BBC009E97B7 /* AcceptButton.h */,
+				4A4FB5251A8B4BBC009E97B7 /* AcceptButton.m */,
+			);
+			name = "notification stuff";
+			sourceTree = "<group>";
+		};
+		4AD2A0C51A92CDA7005FB377 /* LeftSidePanelStuff */ = {
+			isa = PBXGroup;
+			children = (
+				4A60176B1A90A86200847F64 /* SWRevealViewController.h */,
+				4A60176C1A90A86200847F64 /* SWRevealViewController.m */,
+				4A6017651A90907700847F64 /* PanelViewController.h */,
+				4A6017661A90907700847F64 /* PanelViewController.m */,
+			);
+			name = LeftSidePanelStuff;
+			sourceTree = "<group>";
+		};
+		4AD2A0C61A92CDE1005FB377 /* GroupView */ = {
+			isa = PBXGroup;
+			children = (
+				4A6AF4E31A8C01B60015D09E /* GroupTableViewController.h */,
+				4A6AF4E41A8C01B60015D09E /* GroupTableViewController.m */,
+				4A69B2871A8D7F3500026198 /* GroupViewCellTableViewCell.h */,
+				4A69B2881A8D7F3500026198 /* GroupViewCellTableViewCell.m */,
+				4A69B28A1A8D8EEE00026198 /* ReportGameViewController.h */,
+				4A69B28B1A8D8EEE00026198 /* ReportGameViewController.m */,
+				4ADE26611A91A17D009C6A55 /* AddFriendsToGroupViewController.h */,
+				4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */,
+			);
+			name = GroupView;
+			sourceTree = "<group>";
+		};
+		4AD2A0C71A92CDF3005FB377 /* Misc Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A6017721A90C0BA00847F64 /* SettingsViewController.h */,
+				4A6017731A90C0BA00847F64 /* SettingsViewController.m */,
+				4A6017751A90C0CF00847F64 /* LicensesViewController.h */,
+				4A6017761A90C0CF00847F64 /* LicensesViewController.m */,
+			);
+			name = "Misc Views";
+			sourceTree = "<group>";
+		};
+		4AD2A4841A92F847005FB377 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4ABB3D4B1A7DEA4A001724D5 /* Bolts.framework */,
+				4ABB3D4C1A7DEA4A001724D5 /* Parse.framework */,
+				4ABB3D4D1A7DEA4A001724D5 /* ParseCrashReporting.framework */,
+				4ABB3D4E1A7DEA4A001724D5 /* ParseFacebookUtils.framework */,
+				4ABB3D4F1A7DEA4A001724D5 /* ParseUI.framework */,
+				4ABB3D551A7DEAB5001724D5 /* AudioToolbox.framework */,
+				4ABB3D591A7DEAC1001724D5 /* CoreGraphics.framework */,
+				4ABB3D671A7DEB01001724D5 /* libz.dylib */,
+				4ABB3D691A7DEB0F001724D5 /* libsqlite3.dylib */,
+				4ABB3D571A7DEABB001724D5 /* CFNetwork.framework */,
+				4ABB3D651A7DEAF4001724D5 /* SystemConfiguration.framework */,
+				4ABB3D631A7DEAE9001724D5 /* StoreKit.framework */,
+				4ABB3D5F1A7DEADD001724D5 /* QuartzCore.framework */,
+				4ABB3D611A7DEAE3001724D5 /* Security.framework */,
+				4ABB3D5D1A7DEAD5001724D5 /* MobileCoreServices.framework */,
+				4ABB3D5B1A7DEACC001724D5 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +378,7 @@
 				TargetAttributes = {
 					4ABB3D1E1A7DE992001724D5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 8YXPR9XYQK;
 					};
 					4ABB3D3A1A7DE992001724D5 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -331,6 +393,7 @@
 			knownRegions = (
 				en,
 				Base,
+				he,
 			);
 			mainGroup = 4ABB3D161A7DE992001724D5;
 			productRefGroup = 4ABB3D201A7DE992001724D5 /* Products */;
@@ -380,6 +443,7 @@
 				4ADE26631A91A17D009C6A55 /* AddFriendsToGroupViewController.m in Sources */,
 				4ABB3D251A7DE992001724D5 /* main.m in Sources */,
 				4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */,
+				4AD2A4871A9302A4005FB377 /* AddInitialFriendsViewController.m in Sources */,
 				4A60176A1A9092C800847F64 /* HomePageViewController.m in Sources */,
 				4A9CC3621A847374006F8706 /* homePageTableViewTableViewController.m in Sources */,
 				4ABB3D2B1A7DE992001724D5 /* Ladr.xcdatamodeld in Sources */,
@@ -514,6 +578,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ladr",
+					/Users/markusnotti/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Ladr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -529,6 +594,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ladr",
+					/Users/markusnotti/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Ladr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

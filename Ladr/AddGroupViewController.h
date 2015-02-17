@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "AddInitialFriendsViewController.h"
 
-@interface AddGroupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
+@interface AddGroupViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *groupNameTextField;
 @property (weak, nonatomic) IBOutlet UITableView *friendsTableView;

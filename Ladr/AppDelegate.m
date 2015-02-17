@@ -72,6 +72,16 @@
     [self saveContext];
 }
 
+#pragma mark - FB
+
+//- (BOOL)application:(UIApplication *)application
+//            openURL:(NSURL *)url
+//  sourceApplication:(NSString *)sourceApplication
+//         annotation:(id)annotation {
+//    // attempt to extract a token from the url
+//    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+//}
+
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;
