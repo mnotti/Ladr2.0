@@ -78,7 +78,7 @@
     GroupViewCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.memberRank.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+    cell.memberRank.text = [NSString stringWithFormat:@"%d)", indexPath.row + 1];
     cell.memberUsername.text = [self.groupMembersData objectAtIndex:(indexPath.row * 4)];
     cell.memberRating.text = [NSString stringWithFormat:@"%@", [self.groupMembersData objectAtIndex:(indexPath.row * 4) + 1]];
     

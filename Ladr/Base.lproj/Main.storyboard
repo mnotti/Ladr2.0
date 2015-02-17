@@ -19,31 +19,48 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XNH-m7-Od8" id="f4W-MJ-QOU">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He0-TV-Do5">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He0-TV-Do5">
                                             <rect key="frame" x="199" y="11" width="55" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="55" id="vLu-8u-KsE"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08c-uE-3d6">
-                                            <rect key="frame" x="8" y="11" width="10" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRS-fB-zLs">
+                                            <rect key="frame" x="32" y="11" width="158" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRS-fB-zLs">
-                                            <rect key="frame" x="26" y="12" width="165" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyd-P2-v6h">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyd-P2-v6h">
                                             <rect key="frame" x="262" y="11" width="50" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08c-uE-3d6">
+                                            <rect key="frame" x="8" y="11" width="16" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="16" id="19n-VJ-Xtz"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mRS-fB-zLs" firstAttribute="baseline" secondItem="He0-TV-Do5" secondAttribute="baseline" id="89M-gc-siF"/>
+                                        <constraint firstItem="mRS-fB-zLs" firstAttribute="baseline" secondItem="08c-uE-3d6" secondAttribute="baseline" id="Cox-ub-OWB"/>
+                                        <constraint firstItem="lyd-P2-v6h" firstAttribute="baseline" secondItem="He0-TV-Do5" secondAttribute="baseline" id="JOQ-pH-DC4"/>
+                                        <constraint firstItem="mRS-fB-zLs" firstAttribute="leading" secondItem="08c-uE-3d6" secondAttribute="trailing" constant="8" symbolic="YES" id="LPd-gA-Mx5"/>
+                                        <constraint firstItem="08c-uE-3d6" firstAttribute="centerY" secondItem="f4W-MJ-QOU" secondAttribute="centerY" id="asN-Hm-U5e"/>
+                                        <constraint firstItem="08c-uE-3d6" firstAttribute="leading" secondItem="f4W-MJ-QOU" secondAttribute="leadingMargin" id="b6p-fj-hGn"/>
+                                        <constraint firstAttribute="trailing" secondItem="He0-TV-Do5" secondAttribute="trailing" constant="66" id="lTS-n8-Z7f"/>
+                                        <constraint firstItem="He0-TV-Do5" firstAttribute="leading" secondItem="mRS-fB-zLs" secondAttribute="trailing" constant="9" id="qAu-oA-Rx4"/>
+                                        <constraint firstItem="lyd-P2-v6h" firstAttribute="leading" secondItem="He0-TV-Do5" secondAttribute="trailing" constant="8" symbolic="YES" id="sFw-Ps-IQx"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="memberRank" destination="08c-uE-3d6" id="Zr4-eo-SKj"/>
@@ -66,7 +83,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfJ-rr-2pS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2829" y="292"/>
+            <point key="canvasLocation" x="2829" y="288"/>
         </scene>
         <!--Add Friends To Group View Controller-->
         <scene sceneID="wQU-tG-6Dw">
@@ -212,7 +229,7 @@
             </objects>
             <point key="canvasLocation" x="3295" y="292"/>
         </scene>
-        <!--Home Page View Controller-->
+        <!--Groups-->
         <scene sceneID="HHB-cu-vPg">
             <objects>
                 <viewController id="M4g-fH-BVK" customClass="HomePageViewController" sceneMemberID="viewController">
@@ -244,7 +261,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="wMA-Ok-H7W"/>
+                    <navigationItem key="navigationItem" title="Groups" id="wMA-Ok-H7W"/>
                     <connections>
                         <outlet property="mainTableView" destination="IMN-7d-Eku" id="JOH-LP-sgl"/>
                         <outlet property="navBar" destination="wMA-Ok-H7W" id="xTE-lG-IGm"/>
