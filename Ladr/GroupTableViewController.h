@@ -21,5 +21,7 @@
 
 @property (nonatomic, strong) PFObject* currentGroup; //queried for in viewDidLoad
 
+@property (nonatomic, strong) NSMutableArray* visibleCells;
+
 
 @end

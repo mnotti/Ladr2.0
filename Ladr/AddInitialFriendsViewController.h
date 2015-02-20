@@ -33,5 +33,7 @@
 //groupName
 @property (strong, nonatomic) NSString* groupNameNew;
 
+@property (nonatomic) UIImage* groupImage;
+
 
 @end

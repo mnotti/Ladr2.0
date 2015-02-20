@@ -32,6 +32,8 @@
             NSLog(@"members in this group are: %@", self.groupMembersData);
             self.groupMembersData = [self mergeSort:self.groupMembersData];
             [self.tableView reloadData];
+            self.visibleCells = (NSMutableArray*)[self.tableView visibleCells];
+            [self animate:(1)];
         }
     }];
 
@@ -86,6 +88,37 @@
     
     return cell;
 }
+
+- (void)animate:(NSInteger)index {
+    //////THIS DOES ONE AT A TIME
+    if ([self.visibleCells count] <= index) {
+        return;
+    }
+    
+    UITableViewCell* aCell = self.visibleCells[index];
+    [aCell setFrame:CGRectMake(320, aCell.frame.origin.y, aCell.frame.size.width, aCell.frame.size.height)];
+    
+    [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self.visibleCells[index] setFrame:CGRectMake(0, aCell.frame.origin.y, aCell.frame.size.width, aCell.frame.size.height)];
+    } completion:^(BOOL finished) {
+        [self animate:index + 1];
+    }];
+
+///THIS DOES ALL CELLS SIMULTANEOUSLY
+//    [[self.tableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
+//        [cell setFrame:CGRectMake(320, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+//        NSLog(@"idx integer = %d", (int)idx);
+//        [UIView animateWithDuration:0.2 delay:1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+//            [cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];}
+//                         completion:nil];
+//    
+//        [UIView animateWithDuration:0.5 animations:^{
+//            [cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+//        }];
+//    }];
+}
+/////
+
 
 -(void) addAction{
     [self performSegueWithIdentifier:@"showReportScore" sender:self];

@@ -234,40 +234,97 @@
     
             [relation addObject:self.currentUser];
     
-            ////////////////////////////////////////
+    // Save the image to Parse
+    NSData* data = UIImageJPEGRepresentation(self.groupImage, 0.5f);
+    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:data];
+ 
     
-            [newGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (succeeded) //newGroupCreated with initial member being current User
-                {
-                    NSLog(@"new group saved");
-    
-                    for (PFUser* userToRequest in self.usersSelected)
-                    {
-                        PFObject* newGroupRequest = [PFObject objectWithClassName:@"GroupRequest"];
-                        newGroupRequest[@"from"] = self.currentUser;
-                        newGroupRequest[@"to"] = userToRequest;
-                        newGroupRequest[@"group"] = newGroup;
-                        newGroupRequest[@"groupName"] = self.groupNameNew;
-                        [newGroupRequest saveInBackground];
-                        NSLog(@"one request saved");
-    
-                    }
-    
-                    [self.userGroups insertObject:self.groupNameNew atIndex:0]; //adds group to user's group list
-                    self.currentUser [@"groups"] = self.userGroups;
-                    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (succeeded) //current user's group list updated
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // The image has now been uploaded to Parse. Associate it with a new object
+            PFObject* newPhotoObject = [PFObject objectWithClassName:@"PhotoObject"];
+            [newPhotoObject setObject:imageFile forKey:@"image"];
+            
+            [newPhotoObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [newGroup setObject:imageFile forKey:@"groupImage"];
+
+                    [newGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) //newGroupCreated with initial member being current User
                         {
-                            NSLog(@"user saved");
-    
-                           // self.doneButton.enabled = YES;
-                            NSLog(@"user saved");
-                            [self.navigationController popToRootViewControllerAnimated:YES]; //return to main screen
+                            NSLog(@"new group saved");
+                            
+                            for (PFUser* userToRequest in self.usersSelected)
+                            {
+                                PFObject* newGroupRequest = [PFObject objectWithClassName:@"GroupRequest"];
+                                newGroupRequest[@"from"] = self.currentUser;
+                                newGroupRequest[@"to"] = userToRequest;
+                                newGroupRequest[@"group"] = newGroup;
+                                newGroupRequest[@"groupName"] = self.groupNameNew;
+                                [newGroupRequest saveInBackground];
+                                NSLog(@"one request saved");
+                                
+                            }
+                            
+                            [self.userGroups insertObject:self.groupNameNew atIndex:0]; //adds group to user's group list
+                            self.currentUser [@"groups"] = self.userGroups;
+                            [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (succeeded) //current user's group list updated
+                                {
+                                    NSLog(@"user saved");
+                                    
+                                    // self.doneButton.enabled = YES;
+                                    NSLog(@"user saved");
+                                    [self.navigationController popToRootViewControllerAnimated:YES]; //return to main screen
+                                }
+                            }];
+                            
                         }
                     }];
-    
+
+                }
+                else{
+                    // Error
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
                 }
             }];
+        }
+    }];
+    
+            ////////////////////////////////////////
+    
+//            [newGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                if (succeeded) //newGroupCreated with initial member being current User
+//                {
+//                    NSLog(@"new group saved");
+//    
+//                    for (PFUser* userToRequest in self.usersSelected)
+//                    {
+//                        PFObject* newGroupRequest = [PFObject objectWithClassName:@"GroupRequest"];
+//                        newGroupRequest[@"from"] = self.currentUser;
+//                        newGroupRequest[@"to"] = userToRequest;
+//                        newGroupRequest[@"group"] = newGroup;
+//                        newGroupRequest[@"groupName"] = self.groupNameNew;
+//                        [newGroupRequest saveInBackground];
+//                        NSLog(@"one request saved");
+//    
+//                    }
+//    
+//                    [self.userGroups insertObject:self.groupNameNew atIndex:0]; //adds group to user's group list
+//                    self.currentUser [@"groups"] = self.userGroups;
+//                    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                        if (succeeded) //current user's group list updated
+//                        {
+//                            NSLog(@"user saved");
+//    
+//                           // self.doneButton.enabled = YES;
+//                            NSLog(@"user saved");
+//                            [self.navigationController popToRootViewControllerAnimated:YES]; //return to main screen
+//                        }
+//                    }];
+//    
+//                }
+//            }];
             ////////////////////////////////////////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////////////////////////////////////

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "HomePageCell.h"
 
 #import "GroupTableViewController.h"
 #import "SWRevealViewController.h"
@@ -15,10 +16,15 @@
 //#import <FacebookSDK/FacebookSDK.h>
 
 @interface HomePageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
 
 @property (nonatomic, strong) NSArray* userGroups;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
+
+@property (strong, nonatomic) NSMutableArray* visibleCells;
+@property (nonatomic) NSMutableArray* groupImages;
+@property (nonatomic) NSMutableArray* actuallyGroups;
 
 @end

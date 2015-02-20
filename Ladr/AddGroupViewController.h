@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "AddInitialFriendsViewController.h"
+#import "ImageChosenView.h"
 
 @interface AddGroupViewController : UIViewController <UIGestureRecognizerDelegate>
 
@@ -24,6 +25,10 @@
 
 @property (strong, nonatomic) PFUser* friendBeingDisplayed;
 @property (strong, nonatomic) PFUser* currentUser;
+
+
+@property (weak, nonatomic) IBOutlet ImageChosenView *imageChosen;
+@property (nonatomic) UIImage* imageChosenImage;
 
 
 @end

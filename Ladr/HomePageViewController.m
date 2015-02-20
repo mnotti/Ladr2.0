@@ -26,19 +26,46 @@
     self.userGroups = currentUser[@"groups"];
     NSLog(@"%@", [self.userGroups objectAtIndex:0]);
     
+    
     [self.mainTableView reloadData];
+    self.visibleCells  = (NSMutableArray*)[self.mainTableView visibleCells];
+    [self animate:1];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //FB LOGIN
-//    FBLoginView *loginView = [[FBLoginView alloc] init];
-//    loginView.center = self.view.center;
-//    [self.view addSubview:loginView];
     
-    //for testing of ratings
+    // suppose we have a author object, for which we want to get all books
+    
+    // first we will create a query on the Book object
+    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+    
+    // now we will query the authors relation to see if the author object
+    // we have is contained therein
+    [query whereKey:@"membersRelation" equalTo:[PFUser currentUser]];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            self.actuallyGroups = (NSMutableArray*)objects;
+             NSLog(@"groups: %@", objects);
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    for (int i = 0; i < [self.actuallyGroups count]; i++)
+    {
+        NSLog(@"group was saved");
+        PFFile *userImageFile = self.actuallyGroups[i][@"imageFile"];
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                self.groupImages[i] = [UIImage imageWithData:imageData];
+                (NSLog(@"image was saved"));
+                 [self.mainTableView reloadData];
+        }
+    }];
+    }
 
-   
-    
     UIBarButtonItem *addGroupBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction)];
     
     UIBarButtonItem *notificationsBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"!" style:UIBarButtonItemStylePlain target:self action:@selector(notificationAction)];
@@ -79,76 +106,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
--(void) ratingsTest:(long*)previousRatings{
-    //long previousRatings[20] = {100, 150, 200, 250, 300, 350, 400, 200, 200, 400, 700, 500,400, 300, 400, 200, 400, 400, 400, 350};
-    //for (int i = 0; i < 20; i += 2)
-    //{
-        long k = 25;
-        long winnerRating = previousRatings[0];
-        long loserRating = previousRatings[1];
-        long diff = winnerRating - loserRating;
-        
-        long newWinnerRating;
-        long newLoserRating;
-        if (winnerRating >= loserRating){
-           if (diff < 100 && diff >= 0)
-           {
-               newLoserRating = loserRating - k;
-               newWinnerRating = winnerRating + k;
-           }
-            else if (diff < 200 && diff >= 100)
-            {
-                newLoserRating = loserRating - 0.5*k;
-                newWinnerRating = winnerRating + 0.5*k;
-            }
-            else if (diff < 300 && diff >= 200)
-            {
-                newLoserRating = loserRating - 0.25*k;
-                newWinnerRating = winnerRating + 0.25*k;
-            }
-            else
-            {
-                newLoserRating = loserRating - 0.125*k;
-                newWinnerRating = winnerRating + 0.125*k;
-            }
-            
-        }
-        else if (winnerRating < loserRating)
-        {
-            if (-diff < 100 && -diff >= 0)
-            {
-                newLoserRating = loserRating - k;
-                newWinnerRating = winnerRating + k;
-            }
-            else if (-diff < 200 && -diff >= 100)
-            {
-                newLoserRating = loserRating - 2*k;
-                newWinnerRating = winnerRating + 2*k;
-            }
-            else if (-diff < 300 && -diff >= 200)
-            {
-                newLoserRating = loserRating - 3*k;
-                newWinnerRating = winnerRating + 3*k;
-            }
-            else
-            {
-                newLoserRating = loserRating - 4*k;
-                newWinnerRating = winnerRating + 4*k;
-            }
-        }
-        else
-        {
-            newWinnerRating = 25 + winnerRating;
-            newLoserRating = loserRating - 25;
-        }
-        NSLog(@"user wins: rating goes from %ld to %ld", winnerRating, newWinnerRating);
-        NSLog(@"opp loses: rating goes from %ld to %ld", loserRating, newLoserRating);
-    previousRatings[0] = newWinnerRating;
-    previousRatings[1] = newLoserRating;
-    
-        
-   // }
-}
+
 
 
 
@@ -156,6 +114,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 #pragma mark - Table view data source
 
@@ -172,9 +132,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainScreenCell" forIndexPath:indexPath];
+    HomePageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainScreenCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [self.userGroups objectAtIndex:indexPath.row];
+    cell.groupName.text = [self.userGroups objectAtIndex:indexPath.row];
+    cell.groupImage.image = [self.groupImages objectAtIndex:indexPath.row];
+    NSLog(@"image = %@", cell.groupImage.image);
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     return cell;
@@ -183,16 +145,44 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath     *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     
     /////////////////////////////////////////////////
     
     /////////////////////////////////
-    long indexInt = indexPath.row;
     
     [self performSegueWithIdentifier:@"showGroup" sender:self];
     
 }
+
+- (void)animate:(NSInteger)index {
+    //ONE AT A TIME
+//    if ([self.visibleCells count] <= index) {
+//        return;
+//    }
+//    
+//    UITableViewCell* aCell = self.visibleCells[index];
+//    [aCell setFrame:CGRectMake(320, aCell.frame.origin.y, aCell.frame.size.width, aCell.frame.size.height)];
+//    
+//    [UIView animateWithDuration:0.35 delay:0 options:0 animations:^{
+//        [self.visibleCells[index] setFrame:CGRectMake(0, aCell.frame.origin.y, aCell.frame.size.width, aCell.frame.size.height)];
+//    } completion:^(BOOL finished) {
+//        [self animate:index + 1];
+//    }];
+    //ALL SIMULTANEOUSLY
+    [[self.mainTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        [cell setFrame:CGRectMake(320, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+        [UIView animateWithDuration:0.2 delay:1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            [cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];}
+                         completion:nil];
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            [cell setFrame:CGRectMake(0, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+        }];
+    }];
+}
+
+
 
 
 /*

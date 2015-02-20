@@ -17,9 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.imageChosen.userInteractionEnabled = YES;
+    self.imageChosen.image = [UIImage imageNamed:@"anonymous"];
+    [self.view bringSubviewToFront:self.imageChosen];
     
-    //remove this
-
+    [self selectPhoto];
     
     //to remove the keyboard when tapping outside of it
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -47,35 +49,41 @@
     }
     
     
-    /////////////////////////////////////////////////////////////////////////////////////
-    //MAKE THIS A MORE DETAILED QUERY IN THE FUTURE//////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
 
-//    PFQuery* queryForFriends = [PFUser query];  //query for all users
-//    [queryForFriends orderByAscending:@"score"];
-//    [queryForFriends findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//    
-//        if (!error)
-//        {
-//            self.potentialFriends = objects;
-//           [self.friendsTableView reloadData];
-//        }
-//        else{
-//            NSLog(@"error querying for users");
-//        }
-//    }];
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-
-
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)selectPhoto {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+    
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.imageChosen.image = chosenImage;
+    self.imageChosenImage = chosenImage;
+    
+    NSLog(@"image chosen bam!");
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 
 - (IBAction)createNewGroupRequest:(id)sender //clicking the done button
@@ -112,6 +120,7 @@
         AddInitialFriendsViewController *nextVC = [segue destinationViewController];
         nextVC.groupNameNew = self.groupNameTextField.text;
         nextVC.userGroups = self.userGroups;
+        nextVC.groupImage = self.imageChosenImage;
     }
     
 }
