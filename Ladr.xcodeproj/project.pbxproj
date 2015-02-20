@@ -21,7 +21,6 @@
 		4A69B2891A8D7F3500026198 /* GroupViewCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A69B2881A8D7F3500026198 /* GroupViewCellTableViewCell.m */; };
 		4A69B28C1A8D8EEE00026198 /* ReportGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A69B28B1A8D8EEE00026198 /* ReportGameViewController.m */; };
 		4A6AF4E51A8C01B60015D09E /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6AF4E41A8C01B60015D09E /* GroupTableViewController.m */; };
-		4A7252911A91500A006BD07E /* menu-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7252901A91500A006BD07E /* menu-2.png */; };
 		4A9CC3621A847374006F8706 /* homePageTableViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */; };
 		4ABB3D251A7DE992001724D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D241A7DE992001724D5 /* main.m */; };
 		4ABB3D281A7DE992001724D5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB3D271A7DE992001724D5 /* AppDelegate.m */; };
@@ -51,7 +50,6 @@
 		4ADA1ACF1A96E06C004E499E /* ImageChosenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADA1ACE1A96E06C004E499E /* ImageChosenView.m */; };
 		4ADA1AD21A96EF2D004E499E /* HomePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADA1AD11A96EF2D004E499E /* HomePageCell.m */; };
 		4ADA1AD61A96FAE7004E499E /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA1AD31A96FAE7004E499E /* cat.jpg */; };
-		4ADA1AD71A96FAE7004E499E /* menu-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA1AD41A96FAE7004E499E /* menu-2.png */; };
 		4ADA1AD81A96FAE7004E499E /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA1AD51A96FAE7004E499E /* pic.jpg */; };
 		4ADE26631A91A17D009C6A55 /* AddFriendsToGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */; };
 /* End PBXBuildFile section */
@@ -94,7 +92,6 @@
 		4A69B28B1A8D8EEE00026198 /* ReportGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportGameViewController.m; sourceTree = "<group>"; };
 		4A6AF4E31A8C01B60015D09E /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
 		4A6AF4E41A8C01B60015D09E /* GroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewController.m; sourceTree = "<group>"; };
-		4A7252901A91500A006BD07E /* menu-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu-2.png"; path = "../../../../Downloads/Batch-master/PNG/64x64/menu-2.png"; sourceTree = "<group>"; };
 		4A9CC3601A847374006F8706 /* homePageTableViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homePageTableViewTableViewController.h; sourceTree = "<group>"; };
 		4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = homePageTableViewTableViewController.m; sourceTree = "<group>"; };
 		4ABB3D1F1A7DE992001724D5 /* Ladr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ladr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,7 +131,6 @@
 		4ADA1AD01A96EF2D004E499E /* HomePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCell.h; sourceTree = "<group>"; };
 		4ADA1AD11A96EF2D004E499E /* HomePageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCell.m; sourceTree = "<group>"; };
 		4ADA1AD31A96FAE7004E499E /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
-		4ADA1AD41A96FAE7004E499E /* menu-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-2.png"; sourceTree = "<group>"; };
 		4ADA1AD51A96FAE7004E499E /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
 		4ADE26611A91A17D009C6A55 /* AddFriendsToGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsToGroupViewController.h; sourceTree = "<group>"; };
 		4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsToGroupViewController.m; sourceTree = "<group>"; };
@@ -225,11 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				4ADA1AD31A96FAE7004E499E /* cat.jpg */,
-				4ADA1AD41A96FAE7004E499E /* menu-2.png */,
 				4ADA1AD51A96FAE7004E499E /* pic.jpg */,
 				4ADA1ACA1A96C088004E499E /* photoCellCollectionViewCell.h */,
 				4ADA1ACB1A96C088004E499E /* photoCellCollectionViewCell.m */,
-				4A7252901A91500A006BD07E /* menu-2.png */,
 				4A9CC3601A847374006F8706 /* homePageTableViewTableViewController.h */,
 				4A9CC3611A847374006F8706 /* homePageTableViewTableViewController.m */,
 				4ABB3D231A7DE992001724D5 /* Info.plist */,
@@ -430,8 +424,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ABB3D311A7DE992001724D5 /* Main.storyboard in Resources */,
-				4ADA1AD71A96FAE7004E499E /* menu-2.png in Resources */,
-				4A7252911A91500A006BD07E /* menu-2.png in Resources */,
 				4ADA1AD81A96FAE7004E499E /* pic.jpg in Resources */,
 				4ABB3D361A7DE992001724D5 /* LaunchScreen.xib in Resources */,
 				4ABB3D331A7DE992001724D5 /* Images.xcassets in Resources */,
