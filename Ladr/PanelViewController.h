@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "GlobalVarsTest.h"
 
-@interface PanelViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface PanelViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *panelTableView;
 @property (strong, nonatomic) NSArray* menuArray;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @end

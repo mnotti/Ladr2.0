@@ -16,6 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //Global vars test
+//    GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+//    NSLog(@"%@", obj.str);
+    
+    
     UIBarButtonItem *sidebarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:nil];
     
     

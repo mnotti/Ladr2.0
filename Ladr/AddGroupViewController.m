@@ -21,7 +21,14 @@
     self.imageChosen.image = [UIImage imageNamed:@"anonymous"];
     [self.view bringSubviewToFront:self.imageChosen];
     
-    [self selectPhoto];
+    //SETTING UP TAP RECOGNIZER FOR PIC
+    self.imageChosen.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc]
+                                     initWithTarget:self action:@selector(handleTap)];
+    tgr.delegate = self;
+    [self.imageChosen addGestureRecognizer:tgr];
+    //[tgr release];
+    
     
     //to remove the keyboard when tapping outside of it
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -55,6 +62,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)handleTap{
+    [self selectPhoto];
 }
 
 - (void)selectPhoto {

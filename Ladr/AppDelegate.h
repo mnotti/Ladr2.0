@@ -9,6 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "GlobalVarsTest.h"
 //#import <FacebookSDK/FacebookSDK.h>
 
 

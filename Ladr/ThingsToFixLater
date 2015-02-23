@@ -1,0 +1,6 @@
+THINGS TO FIX LATER (BUGS)
+===========================
+
+1) When saving profile pics into the documents directory, they should be saved to a file which ends with the string @"usernameProfilePic"
+
+2)

@@ -17,19 +17,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //setup pic
+    
     self.usernameLabel.text = [PFUser currentUser][@"username"];
     self.menuArray = [[NSArray alloc] initWithObjects:@"Groups", @"Settings", @"Licenses/Agreements", nil];
     [self.panelTableView reloadData];
+    
+    self.profileImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleProfilePicTap)];
+    tgr.delegate = self;
+    [self.profileImageView addGestureRecognizer:tgr];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+
+    NSLog(@"view did appear is running");
+    if (obj.profilePic)
+    {
+        NSLog(@"there is a profile pic stored in the data controller");
+        self.profileImageView.image = obj.profilePic;
+    }
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)handleProfilePicTap
+{
+    [self performSegueWithIdentifier:@"showProfile" sender:self];
 }
 
 #pragma mark - Table view data source

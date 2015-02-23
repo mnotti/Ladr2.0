@@ -52,6 +52,9 @@
 		4ADA1AD61A96FAE7004E499E /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA1AD31A96FAE7004E499E /* cat.jpg */; };
 		4ADA1AD81A96FAE7004E499E /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADA1AD51A96FAE7004E499E /* pic.jpg */; };
 		4ADE26631A91A17D009C6A55 /* AddFriendsToGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */; };
+		4AEF49FE1A9A906000A2561D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF49FD1A9A906000A2561D /* ProfileViewController.m */; };
+		4AEF4A011A9AA24D00A2561D /* GlobalVarsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4A001A9AA24D00A2561D /* GlobalVarsTest.m */; };
+		4AEF4A081A9AADCF00A2561D /* ThingsToFixLater in Resources */ = {isa = PBXBuildFile; fileRef = 4AEF4A071A9AADCF00A2561D /* ThingsToFixLater */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,11 @@
 		4ADA1AD51A96FAE7004E499E /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
 		4ADE26611A91A17D009C6A55 /* AddFriendsToGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsToGroupViewController.h; sourceTree = "<group>"; };
 		4ADE26621A91A17D009C6A55 /* AddFriendsToGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsToGroupViewController.m; sourceTree = "<group>"; };
+		4AEF49FC1A9A906000A2561D /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		4AEF49FD1A9A906000A2561D /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		4AEF49FF1A9AA24D00A2561D /* GlobalVarsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVarsTest.h; sourceTree = "<group>"; };
+		4AEF4A001A9AA24D00A2561D /* GlobalVarsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVarsTest.m; sourceTree = "<group>"; };
+		4AEF4A071A9AADCF00A2561D /* ThingsToFixLater */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ThingsToFixLater; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +200,7 @@
 		4ABB3D211A7DE992001724D5 /* Ladr */ = {
 			isa = PBXGroup;
 			children = (
+				4AEF4A041A9AADA100A2561D /* Notes */,
 				4AD2A0C21A92CD41005FB377 /* delegate */,
 				4AD2A0C31A92CD51005FB377 /* login/signup */,
 				4AD2A0C41A92CD6A005FB377 /* notification stuff */,
@@ -208,6 +217,9 @@
 				4ADA1ACE1A96E06C004E499E /* ImageChosenView.m */,
 				4AD2A4851A9302A4005FB377 /* AddInitialFriendsViewController.h */,
 				4AD2A4861A9302A4005FB377 /* AddInitialFriendsViewController.m */,
+				4AEF49FC1A9A906000A2561D /* ProfileViewController.h */,
+				4AEF49FD1A9A906000A2561D /* ProfileViewController.m */,
+				4AEF4A021A9AA25700A2561D /* data */,
 				4ABB3D2F1A7DE992001724D5 /* Main.storyboard */,
 				4ABB3D321A7DE992001724D5 /* Images.xcassets */,
 				4ABB3D341A7DE992001724D5 /* LaunchScreen.xib */,
@@ -341,6 +353,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4AEF4A021A9AA25700A2561D /* data */ = {
+			isa = PBXGroup;
+			children = (
+				4AEF49FF1A9AA24D00A2561D /* GlobalVarsTest.h */,
+				4AEF4A001A9AA24D00A2561D /* GlobalVarsTest.m */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
+		4AEF4A041A9AADA100A2561D /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				4AEF4A071A9AADCF00A2561D /* ThingsToFixLater */,
+			);
+			name = Notes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -424,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ABB3D311A7DE992001724D5 /* Main.storyboard in Resources */,
+				4AEF4A081A9AADCF00A2561D /* ThingsToFixLater in Resources */,
 				4ADA1AD81A96FAE7004E499E /* pic.jpg in Resources */,
 				4ABB3D361A7DE992001724D5 /* LaunchScreen.xib in Resources */,
 				4ABB3D331A7DE992001724D5 /* Images.xcassets in Resources */,
@@ -446,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AEF4A011A9AA24D00A2561D /* GlobalVarsTest.m in Sources */,
 				4ABB3D281A7DE992001724D5 /* AppDelegate.m in Sources */,
 				4ADA1ACC1A96C088004E499E /* photoCellCollectionViewCell.m in Sources */,
 				4A69B2891A8D7F3500026198 /* GroupViewCellTableViewCell.m in Sources */,
@@ -453,6 +484,7 @@
 				4A6017741A90C0BA00847F64 /* SettingsViewController.m in Sources */,
 				4A6017771A90C0CF00847F64 /* LicensesViewController.m in Sources */,
 				4ADE26631A91A17D009C6A55 /* AddFriendsToGroupViewController.m in Sources */,
+				4AEF49FE1A9A906000A2561D /* ProfileViewController.m in Sources */,
 				4ABB3D251A7DE992001724D5 /* main.m in Sources */,
 				4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */,
 				4ADA1AD21A96EF2D004E499E /* HomePageCell.m in Sources */,

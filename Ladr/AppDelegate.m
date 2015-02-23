@@ -45,6 +45,17 @@
         self.window.rootViewController = navigation;
     }
     
+    //retrieving profile pic
+    NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *path = [dir stringByAppendingPathComponent:@"profilePic.png"];
+    if([[NSFileManager defaultManager] fileExistsAtPath:path])
+    {
+        NSFileHandle* myFileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+        UIImage* loadedImage = [UIImage imageWithData:[myFileHandle readDataToEndOfFile]];
+        GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+        obj.profilePic = loadedImage;
+    }
+    
   return YES;
 }
 

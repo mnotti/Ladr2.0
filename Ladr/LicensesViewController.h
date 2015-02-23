@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import "GlobalVarsTest.h"
 
 @interface LicensesViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;

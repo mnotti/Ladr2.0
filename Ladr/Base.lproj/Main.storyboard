@@ -469,7 +469,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PeL-cL-9Pg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3514" y="1703"/>
+            <point key="canvasLocation" x="4046" y="1703"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="k7C-jv-3VT">
@@ -791,7 +791,9 @@
                     </view>
                     <connections>
                         <outlet property="panelTableView" destination="kvM-Qj-hMb" id="e4W-XN-Gsz"/>
+                        <outlet property="profileImageView" destination="qji-uz-UhT" id="bZ8-rJ-E6F"/>
                         <outlet property="usernameLabel" destination="nww-5A-jbp" id="HnQ-fY-PGH"/>
+                        <segue destination="B27-qL-6DN" kind="custom" identifier="showProfile" customClass="SWRevealViewControllerSeguePushController" id="z4W-27-b0H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CDS-Nw-G2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -896,6 +898,41 @@
             </objects>
             <point key="canvasLocation" x="972" y="1713"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="jIZ-k6-mhS">
+            <objects>
+                <viewController id="PVH-Oy-iQv" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="thI-Qc-tTC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Iyd-LA-6Lh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wpk-tr-VvC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HIx-VS-82p">
+                                <rect key="frame" x="62" y="20" width="196" height="121"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePH-RZ-Cb4">
+                                <rect key="frame" x="16" y="149" width="288" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="9Ag-mW-87N"/>
+                    <connections>
+                        <outlet property="navBar" destination="9Ag-mW-87N" id="KF5-wp-d8W"/>
+                        <outlet property="profilePicImageView" destination="HIx-VS-82p" id="NMO-cH-rhu"/>
+                        <outlet property="usernameField" destination="ePH-RZ-Cb4" id="Nx3-l8-iYE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H72-zH-eWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834" y="1727"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="A9l-QZ-d8X">
             <objects>
@@ -915,6 +952,25 @@
             </objects>
             <point key="canvasLocation" x="523" y="1697"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DO1-p6-gMn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B27-qL-6DN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="O6G-9c-snE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PVH-Oy-iQv" kind="relationship" relationship="rootViewController" id="ILa-5O-7NH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gWQ-6Z-xXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1408" y="1727"/>
+        </scene>
     </scenes>
     <resources>
         <image name="anonymous" width="400" height="400"/>
@@ -925,6 +981,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jCh-8E-R60"/>
+        <segue reference="Co3-Sr-yPf"/>
     </inferredMetricsTieBreakers>
 </document>

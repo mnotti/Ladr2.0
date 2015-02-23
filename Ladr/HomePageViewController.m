@@ -48,23 +48,25 @@
         if (!error) {
             self.actuallyGroups = (NSMutableArray*)objects;
              NSLog(@"groups: %@", objects);
+            for (int i = 0; i < [self.actuallyGroups count]; i++)
+            {
+                NSLog(@"group was saved");
+                PFFile *userImageFile = self.actuallyGroups[i][@"imageFile"];
+                NSLog(@"file: %@", userImageFile);
+                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        self.groupImages[i] = [UIImage imageWithData:imageData];
+                        (NSLog(@"image was saved"));
+                        [self.mainTableView reloadData];
+                    }
+                }];
+            }
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    for (int i = 0; i < [self.actuallyGroups count]; i++)
-    {
-        NSLog(@"group was saved");
-        PFFile *userImageFile = self.actuallyGroups[i][@"imageFile"];
-        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-            if (!error) {
-                self.groupImages[i] = [UIImage imageWithData:imageData];
-                (NSLog(@"image was saved"));
-                 [self.mainTableView reloadData];
-        }
-    }];
-    }
+   
 
     UIBarButtonItem *addGroupBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction)];
     
