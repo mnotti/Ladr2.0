@@ -241,41 +241,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IMN-7d-Eku">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IMN-7d-Eku">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainScreenCell" rowHeight="66" id="mH9-yB-ZX4" customClass="HomePageCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainScreenCell" rowHeight="85" id="mH9-yB-ZX4" customClass="HomePageCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mH9-yB-ZX4" id="hKX-eD-5Am">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MZE-Wi-HF2">
-                                                    <rect key="frame" x="8" y="4" width="57" height="57"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="57" id="Nb9-LS-Nrz"/>
-                                                    </constraints>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZE-Wi-HF2">
+                                                    <rect key="frame" x="8" y="7" width="84" height="74"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GroupName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKB-ei-aIH">
-                                                    <rect key="frame" x="73" y="23" width="239" height="21"/>
+                                                    <rect key="frame" x="100" y="33" width="212" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MZE-Wi-HF2" firstAttribute="top" secondItem="hKX-eD-5Am" secondAttribute="topMargin" constant="-4" id="3NE-BB-OxO"/>
-                                                <constraint firstItem="MZE-Wi-HF2" firstAttribute="leading" secondItem="hKX-eD-5Am" secondAttribute="leadingMargin" id="7An-Zh-Uhm"/>
-                                                <constraint firstItem="MZE-Wi-HF2" firstAttribute="centerY" secondItem="hKX-eD-5Am" secondAttribute="centerY" id="B2j-lt-OdD"/>
-                                                <constraint firstItem="PKB-ei-aIH" firstAttribute="top" secondItem="hKX-eD-5Am" secondAttribute="topMargin" constant="15" id="M9a-IY-fMI"/>
-                                                <constraint firstItem="PKB-ei-aIH" firstAttribute="leading" secondItem="MZE-Wi-HF2" secondAttribute="trailing" constant="8" symbolic="YES" id="RIG-W7-llN"/>
-                                                <constraint firstItem="PKB-ei-aIH" firstAttribute="trailing" secondItem="hKX-eD-5Am" secondAttribute="trailingMargin" id="Ub4-43-ccd"/>
+                                                <constraint firstItem="PKB-ei-aIH" firstAttribute="top" secondItem="hKX-eD-5Am" secondAttribute="topMargin" constant="25" id="3nK-13-cG3"/>
+                                                <constraint firstItem="MZE-Wi-HF2" firstAttribute="leading" secondItem="hKX-eD-5Am" secondAttribute="leadingMargin" id="FYB-3i-1Lp"/>
+                                                <constraint firstItem="MZE-Wi-HF2" firstAttribute="top" secondItem="hKX-eD-5Am" secondAttribute="topMargin" constant="-2" id="KQw-ce-FGN"/>
+                                                <constraint firstItem="PKB-ei-aIH" firstAttribute="trailing" secondItem="hKX-eD-5Am" secondAttribute="trailingMargin" id="S8F-Lc-g4p"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="MZE-Wi-HF2" secondAttribute="trailing" constant="220" id="WIB-oM-zVU"/>
+                                                <constraint firstAttribute="centerY" secondItem="MZE-Wi-HF2" secondAttribute="centerY" constant="-0.5" id="YJN-ip-Pqf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PKB-ei-aIH" secondAttribute="bottom" constant="21" id="dQ3-7F-IhQ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="MZE-Wi-HF2" secondAttribute="bottom" constant="-3" id="mnC-eU-a3i"/>
+                                                <constraint firstItem="PKB-ei-aIH" firstAttribute="centerY" secondItem="MZE-Wi-HF2" secondAttribute="centerY" id="uBM-gc-kVb"/>
+                                                <constraint firstItem="PKB-ei-aIH" firstAttribute="leading" secondItem="MZE-Wi-HF2" secondAttribute="trailing" constant="8" symbolic="YES" id="uJx-fj-eOa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="groupImage" destination="MZE-Wi-HF2" id="jrs-FY-FXe"/>
-                                            <outlet property="groupName" destination="PKB-ei-aIH" id="hfj-y1-stJ"/>
+                                            <outlet property="groupImage" destination="MZE-Wi-HF2" id="D6D-7c-CCh"/>
+                                            <outlet property="groupName" destination="PKB-ei-aIH" id="aTN-xO-XeJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -305,7 +306,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEz-x1-FhU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="MlF-wo-EBM"/>
             </objects>
-            <point key="canvasLocation" x="2394" y="966"/>
+            <point key="canvasLocation" x="2394" y="940"/>
         </scene>
         <!--Add Group View Controller-->
         <scene sceneID="Kni-3p-xSV">

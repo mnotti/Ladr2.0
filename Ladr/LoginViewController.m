@@ -36,24 +36,40 @@
 }
 - (IBAction)loginButton:(id)sender {
     [PFUser logInWithUsernameInBackground:self.usernameField.text password:self.passwordField.text
-                                    block:^(PFUser *user, NSError *error) {
-                                        if (user) {
-                                            // Do stuff after successful login.
-                                            NSLog(@"login successful!");
-                                            [self dismissKeyboard];
+        block:^(PFUser *user, NSError *error) {
+        if (user)
+        {
+            // Do stuff after successful login.
+            NSLog(@"login successful!");
+            [self dismissKeyboard];
                                             
-                                            //NAVIGATE TO THE HOME SCREEN
-                                             AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+            NSString* pathComponent = [PFUser currentUser][@"username"];
+            pathComponent = [pathComponent stringByAppendingString:@"ProfilePic"];
+            NSLog(@"path component is : %@", pathComponent);
                                             
-                                          appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+            NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+            NSString *path = [dir stringByAppendingPathComponent:pathComponent];
+            if([[NSFileManager defaultManager] fileExistsAtPath:path])
+            {
+                NSFileHandle* myFileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+                UIImage* loadedImage = [UIImage imageWithData:[myFileHandle readDataToEndOfFile]];
+                GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+                obj.profilePic = loadedImage;
+            }
 
-                                        } else {
+            
+            //NAVIGATE TO THE HOME SCREEN
+            AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+                                            
+            appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+
+                } else {
                                             // The login failed. Check error to see why.
-                                            NSLog(@"login failed");
-                                            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ya done fucked up" message:@"something's incorrect dude" delegate:self cancelButtonTitle:@"geez i'm real sorry man" otherButtonTitles:nil, nil];
-                                            [alert show];
-                                        }
-                                    }];
+                NSLog(@"login failed");
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ya done fucked up" message:@"something's incorrect dude" delegate:self cancelButtonTitle:@"geez i'm real sorry man" otherButtonTitles:nil, nil];
+                [alert show];
+                }
+            }];
 }
 
 /*

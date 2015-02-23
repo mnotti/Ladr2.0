@@ -35,6 +35,23 @@
         NSLog(@"user logged in");
         self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
         NSLog(@"reached this point (1)");
+        
+        //retrieving profile pic
+        NSString* pathComponent = [PFUser currentUser][@"username"];
+        pathComponent = [pathComponent stringByAppendingString:@"ProfilePic"];
+        NSLog(@"path component is : %@", pathComponent);
+        
+        NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *path = [dir stringByAppendingPathComponent:pathComponent];
+        if([[NSFileManager defaultManager] fileExistsAtPath:path])
+        {
+            NSFileHandle* myFileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+            UIImage* loadedImage = [UIImage imageWithData:[myFileHandle readDataToEndOfFile]];
+            GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+            obj.profilePic = loadedImage;
+        }
+        
+
     }
     else
     {
@@ -45,18 +62,7 @@
         self.window.rootViewController = navigation;
     }
     
-    //retrieving profile pic
-    NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *path = [dir stringByAppendingPathComponent:@"profilePic.png"];
-    if([[NSFileManager defaultManager] fileExistsAtPath:path])
-    {
-        NSFileHandle* myFileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
-        UIImage* loadedImage = [UIImage imageWithData:[myFileHandle readDataToEndOfFile]];
-        GlobalVarsTest *obj=[GlobalVarsTest getInstance];
-        obj.profilePic = loadedImage;
-    }
-    
-  return YES;
+     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

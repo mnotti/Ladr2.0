@@ -106,8 +106,13 @@
     GlobalVarsTest *obj=[GlobalVarsTest getInstance];
     obj.profilePic = self.profilePicImageView.image;
     
-     NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *path = [dir stringByAppendingPathComponent:@"profilePic.png"];
+    
+    NSString* pathComponent = [PFUser currentUser][@"username"];
+    pathComponent = [pathComponent stringByAppendingString:@"ProfilePic"];
+    NSLog(@"%@", pathComponent);
+    
+    NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *path = [dir stringByAppendingPathComponent:pathComponent];
     if([[NSFileManager defaultManager] fileExistsAtPath:path])
     {
         NSFileHandle* myFileHandle = [NSFileHandle fileHandleForWritingAtPath:path];

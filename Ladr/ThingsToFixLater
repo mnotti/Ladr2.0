@@ -3,4 +3,6 @@ THINGS TO FIX LATER (BUGS)
 
 1) When saving profile pics into the documents directory, they should be saved to a file which ends with the string @"usernameProfilePic"
 
-2)
+2) I linked the cocoaPods workspace with the intention of using it to sync the cache with the parse database...but I got distracted (come back to that l8r)
+
+3)

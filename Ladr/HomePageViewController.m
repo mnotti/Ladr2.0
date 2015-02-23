@@ -17,6 +17,7 @@
 @implementation HomePageViewController
 
 
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -42,26 +43,16 @@
     
     // now we will query the authors relation to see if the author object
     // we have is contained therein
-    [query whereKey:@"membersRelation" equalTo:[PFUser currentUser]];
+    [query whereKey:@"membersRelation" equalTo:[[PFUser currentUser]objectId]];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
+        if (!error)
+        {
             self.actuallyGroups = (NSMutableArray*)objects;
              NSLog(@"groups: %@", objects);
-            for (int i = 0; i < [self.actuallyGroups count]; i++)
-            {
-                NSLog(@"group was saved");
-                PFFile *userImageFile = self.actuallyGroups[i][@"imageFile"];
-                NSLog(@"file: %@", userImageFile);
-                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                    if (!error) {
-                        self.groupImages[i] = [UIImage imageWithData:imageData];
-                        (NSLog(@"image was saved"));
-                        [self.mainTableView reloadData];
-                    }
-                }];
-            }
-        } else {
+            [self.mainTableView reloadData];
+        }
+        else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
@@ -129,15 +120,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     NSLog(@"groups count: %lu", (unsigned long)[self.userGroups count]);
-    return [self.userGroups count];
+    return [self.actuallyGroups count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomePageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainScreenCell" forIndexPath:indexPath];
     
-    cell.groupName.text = [self.userGroups objectAtIndex:indexPath.row];
-    cell.groupImage.image = [self.groupImages objectAtIndex:indexPath.row];
+    NSLog(@"group in cell: %@ for row: %i", [self.actuallyGroups objectAtIndex:indexPath.row], indexPath.row );
+    cell.groupName.text = ([self.actuallyGroups objectAtIndex:indexPath.row][@"name"]);
+    
+    PFFile *file = (PFFile *)[self.actuallyGroups objectAtIndex:indexPath.row][@"groupImage"];
+    
+    NSData* data = [file getData];
+    cell.groupImage.image = [UIImage imageWithData:data];
+//    [file getDataInBackgroundWithBlock:^(NSData 
     NSLog(@"image = %@", cell.groupImage.image);
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     

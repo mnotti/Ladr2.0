@@ -9,6 +9,7 @@
 #import "HomePageCell.h"
 
 @implementation HomePageCell
+@synthesize groupImage;
 
 - (void)awakeFromNib {
     // Initialization code

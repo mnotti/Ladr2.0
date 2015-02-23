@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 
 @property (strong, nonatomic) NSMutableArray* visibleCells;
-@property (nonatomic) NSMutableArray* groupImages;
-@property (nonatomic) NSMutableArray* actuallyGroups;
+@property (nonatomic, strong) NSMutableArray* groupImages;
+@property (nonatomic, strong) NSMutableArray* actuallyGroups;
 
 @end
