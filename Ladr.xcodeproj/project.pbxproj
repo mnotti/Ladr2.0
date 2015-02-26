@@ -55,7 +55,6 @@
 		4AEF49FE1A9A906000A2561D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF49FD1A9A906000A2561D /* ProfileViewController.m */; };
 		4AEF4A011A9AA24D00A2561D /* GlobalVarsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4A001A9AA24D00A2561D /* GlobalVarsTest.m */; };
 		4AEF4A081A9AADCF00A2561D /* ThingsToFixLater in Resources */ = {isa = PBXBuildFile; fileRef = 4AEF4A071A9AADCF00A2561D /* ThingsToFixLater */; };
-		8872D71BAE50C31C32B51834 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B28E0483814BF506D628177 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,7 +169,6 @@
 				4ABB3D541A7DEA4A001724D5 /* ParseUI.framework in Frameworks */,
 				4ABB3D531A7DEA4A001724D5 /* ParseFacebookUtils.framework in Frameworks */,
 				4ABB3D501A7DEA4A001724D5 /* Bolts.framework in Frameworks */,
-				8872D71BAE50C31C32B51834 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +502,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "";
 			showEnvVarsInLog = 0;
 		};
 		A89694C84305F887E7F4B923 /* Check Pods Manifest.lock */ = {

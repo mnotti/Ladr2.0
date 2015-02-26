@@ -14,6 +14,9 @@
 
 @implementation AddGroupViewController
 
+bool imageSelected = NO;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -21,13 +24,14 @@
     self.imageChosen.image = [UIImage imageNamed:@"anonymous"];
     [self.view bringSubviewToFront:self.imageChosen];
     
+    imageSelected = NO;
+    
     //SETTING UP TAP RECOGNIZER FOR PIC
     self.imageChosen.userInteractionEnabled = YES;
     UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc]
                                      initWithTarget:self action:@selector(handleTap)];
     tgr.delegate = self;
     [self.imageChosen addGestureRecognizer:tgr];
-    //[tgr release];
     
     
     //to remove the keyboard when tapping outside of it
@@ -38,9 +42,6 @@
     [self.view addGestureRecognizer:tap];
     
 
-    //initialize arrays
-    //self.cellsSelected = [NSMutableArray array];
-    //self.usersSelected = [[NSMutableArray alloc] init];
 
     //setup and initialize current user
     PFUser *currentUser = [PFUser currentUser];
@@ -86,6 +87,7 @@
     self.imageChosenImage = chosenImage;
     
     NSLog(@"image chosen bam!");
+    imageSelected = YES; //notifies system that image has been selected and the user can proceed with group creation process
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
@@ -113,6 +115,12 @@
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Try a New Name" message:@"You are already in a group with that name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
         [alert show];
     }
+    else if (!imageSelected)
+    {
+        self.doneButton.enabled = YES;
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"YOU SHALL NOT PASS..." message:@"...Until you select an image to represent your group" delegate:self cancelButtonTitle:@"Yes Gandalf" otherButtonTitles:nil, nil];
+        [alert show];
+    }
     else{
         [self performSegueWithIdentifier:@"showAddInitialFriends" sender:self];
     }
@@ -137,75 +145,7 @@
 }
 
 
-//#pragma mark - TableViewShit
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    // Number of rows is the number of time zones in the region for the specified section.
-//    return [self.potentialFriends count];
-//}
 
-//-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath     *)indexPath
-//{
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    
-//    /////////////////////////////////////////////////
-//    
-//    /////////////////////////////////
-//    long indexInt = indexPath.row;
-//
-//    
-//    //if (cell.accessoryType == UITableViewCellAccessoryNone) //if there's no check
-//    if (![self.cellsSelected containsObject:indexPath])
-//    {
-//        [self.cellsSelected addObject:indexPath];
-//        
-//        [self.usersSelected addObject: [self.potentialFriends objectAtIndex:indexInt]];
-//        NSLog(@"User selected to be added to array: %@", [self.potentialFriends objectAtIndex:indexInt]);
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark; //add a check
-//        
-//    }
-//    else  //if there's a check already
-//    {
-//        [self.cellsSelected removeObject:indexPath];
-//        cell.accessoryType = UITableViewCellAccessoryNone; //take away check
-//        
-//        [self.usersSelected removeObject: [self.potentialFriends objectAtIndex:indexInt]];
-//
-//    }
-//    [tableView reloadData];
-//    
-//}
-
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    // The header for the section is the region name -- get this from the region at the section index.
-//    Region *region = [regions objectAtIndex:section];
-//    return [region name];
-//}
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *MyIdentifier = @"friendsTableCell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
-////    if (cell == nil) {
-////        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier]];
-////    }
-//    
-//    if ([self.cellsSelected containsObject:indexPath])
-//    {
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//    }
-//    else
-//    {
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//        
-//    }
-//    self.friendBeingDisplayed = [self.potentialFriends objectAtIndex:indexPath.row];
-//    cell.textLabel.text = self.friendBeingDisplayed[@"username"];
-//    return cell;
-//}
 
 -(void)dismissKeyboard {
     [self.groupNameTextField resignFirstResponder];

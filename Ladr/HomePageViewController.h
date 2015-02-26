@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "HomePageCell.h"
 
+#import "GlobalVarsTest.h"
 #import "GroupTableViewController.h"
 #import "SWRevealViewController.h"
 

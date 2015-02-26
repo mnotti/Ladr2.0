@@ -16,27 +16,25 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:(BOOL)animated];
-    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
-    [query whereKey:@"name" equalTo:self.currentGroupName];
-    [query whereKey:@"membersRelation" equalTo:[PFUser currentUser]];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (error)
-        {
-            NSLog(@"something went wrong, query could not find group selected");
-            
-        }
-        else
-        {
-            self.currentGroup = object;
-            self.groupMembersData = self.currentGroup[@"memberData"];
-            NSLog(@"members in this group are: %@", self.groupMembersData);
-            self.groupMembersData = [self mergeSort:self.groupMembersData];
-            [self.tableView reloadData];
-            self.visibleCells = (NSMutableArray*)[self.tableView visibleCells];
-            [self animate:(1)];
-        }
-    }];
-
+    
+    GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+    
+    self.currentGroup = obj.currentGroup;
+    self.groupMembersData = self.currentGroup[@"memberData"];
+    
+    NSLog(@"before the sort: %@", self.groupMembersData);
+    
+    self.groupMembersData   = [self mergeSort:self.groupMembersData];
+    
+    NSLog(@"after the sort: %@", self.groupMembersData);
+    
+    self.currentGroup[@"memberData"] = self.groupMembersData;
+    obj.currentGroup = self.currentGroup;
+    
+    [self.tableView reloadData];
+    self.visibleCells = (NSMutableArray*)[self.tableView visibleCells];
+    
+    [self animate:(0)];
 }
 
 - (void)viewDidLoad {
@@ -47,7 +45,7 @@
     
     self.navBar.rightBarButtonItems = [[NSArray alloc] initWithObjects:reportScoreBarButtonItem, addFriendsBarButtonItem, nil];
 
-    self.tableView.rowHeight = 44;
+    //self.tableView.rowHeight = 44;
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -83,6 +81,12 @@
     cell.memberRank.text = [NSString stringWithFormat:@"%d)", indexPath.row + 1];
     cell.memberUsername.text = [self.groupMembersData objectAtIndex:(indexPath.row * 4)];
     cell.memberRating.text = [NSString stringWithFormat:@"%@", [self.groupMembersData objectAtIndex:(indexPath.row * 4) + 1]];
+    NSLog(@"group data in cell: %@", self.groupMembersData);
+    self.winsLosses = [NSString stringWithString:[[self.groupMembersData objectAtIndex:(indexPath.row * 4) + 2] stringValue]];
+    self.winsLosses = [self.winsLosses stringByAppendingString:@"/"];
+   self.winsLosses = [self.winsLosses stringByAppendingString:[[self.groupMembersData objectAtIndex:(indexPath.row * 4) + 3] stringValue]  ];
+    cell.winsLossesField.text = self.winsLosses;
+    NSLog(@"winsLosses = %@", self.winsLosses);
     
     
     

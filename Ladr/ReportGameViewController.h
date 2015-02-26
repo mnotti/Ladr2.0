@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+#import "GlobalVarsTest.h"
+
 @interface ReportGameViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     long rowWithSelectedCell;

@@ -22,42 +22,50 @@
 {
     [super viewDidAppear:animated];
     
+    
     PFUser* currentUser = [PFUser currentUser];
     
     self.userGroups = currentUser[@"groups"];
-    NSLog(@"%@", [self.userGroups objectAtIndex:0]);
-    
-    
+    NSLog(@"%@", self.userGroups);
+    GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+    if (obj.userGroups)
+    {
+        self.actuallyGroups = obj.userGroups;
+    }
+    else{
+        PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+        
+        // now we will query the authors relation to see if the author object
+        // we have is contained therein
+        [query whereKey:@"membersRelation" equalTo:[[PFUser currentUser]objectId]];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error)
+            {
+                self.actuallyGroups = (NSMutableArray*)objects;
+                NSLog(@"groups: %@", objects);
+                [self.mainTableView reloadData];
+                obj.userGroups = self.actuallyGroups;
+            }
+            else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
     [self.mainTableView reloadData];
-    self.visibleCells  = (NSMutableArray*)[self.mainTableView visibleCells];
-    [self animate:1];
+    
+    //slide in cell animation
+   // ===========
+//    self.visibleCells  = (NSMutableArray*)[self.mainTableView visibleCells];
+//    [self animate:1];
     
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // suppose we have a author object, for which we want to get all books
-    
-    // first we will create a query on the Book object
-    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
-    
-    // now we will query the authors relation to see if the author object
-    // we have is contained therein
-    [query whereKey:@"membersRelation" equalTo:[[PFUser currentUser]objectId]];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            self.actuallyGroups = (NSMutableArray*)objects;
-             NSLog(@"groups: %@", objects);
-            [self.mainTableView reloadData];
-        }
-        else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
    
+    
 
     UIBarButtonItem *addGroupBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction)];
     
@@ -118,8 +126,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+   
     // Return the number of rows in the section.
-    NSLog(@"groups count: %lu", (unsigned long)[self.userGroups count]);
     return [self.actuallyGroups count];
 }
 
@@ -168,6 +176,7 @@
 //    } completion:^(BOOL finished) {
 //        [self animate:index + 1];
 //    }];
+    
     //ALL SIMULTANEOUSLY
     [[self.mainTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
         [cell setFrame:CGRectMake(320, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
@@ -227,7 +236,10 @@
     {
         GroupTableViewController *groupViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.mainTableView indexPathForSelectedRow];
-        groupViewController.currentGroupName = [self.userGroups objectAtIndex:indexPath.row];
+        groupViewController.currentGroup = [self.actuallyGroups objectAtIndex:indexPath.row];
+        GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+        obj.currentGroup = [self.actuallyGroups objectAtIndex:indexPath.row];
+
     }
 }
 

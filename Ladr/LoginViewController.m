@@ -43,19 +43,34 @@
             NSLog(@"login successful!");
             [self dismissKeyboard];
                                             
-            NSString* pathComponent = [PFUser currentUser][@"username"];
-            pathComponent = [pathComponent stringByAppendingString:@"ProfilePic"];
-            NSLog(@"path component is : %@", pathComponent);
-                                            
-            NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-            NSString *path = [dir stringByAppendingPathComponent:pathComponent];
-            if([[NSFileManager defaultManager] fileExistsAtPath:path])
+//            NSString* pathComponent = [PFUser currentUser][@"username"];
+//            pathComponent = [pathComponent stringByAppendingString:@"ProfilePic"];
+//            NSLog(@"path component is : %@", pathComponent);
+//                                            
+//            NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//            NSString *path = [dir stringByAppendingPathComponent:pathComponent];
+//            if([[NSFileManager defaultManager] fileExistsAtPath:path])
+//            {
+//                NSFileHandle* myFileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+//                UIImage* loadedImage = [UIImage imageWithData:[myFileHandle readDataToEndOfFile]];
+//                GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+//                obj.profilePic = loadedImage;
+//            }
+            
+            //make everything nil to start:
+            GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+            obj.userGroups = nil;
+            obj.currentGroup = nil;
+            obj.profilePic = nil;
+
+            PFFile *file = (PFFile *)(user[@"profilePic"]);
+
+            if(file)
             {
-                NSFileHandle* myFileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
-                UIImage* loadedImage = [UIImage imageWithData:[myFileHandle readDataToEndOfFile]];
-                GlobalVarsTest *obj=[GlobalVarsTest getInstance];
-                obj.profilePic = loadedImage;
+                NSData* data = [file getData];
+                obj.profilePic = [UIImage imageWithData:data];
             }
+
 
             
             //NAVIGATE TO THE HOME SCREEN

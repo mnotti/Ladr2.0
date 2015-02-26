@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import "GlobalVarsTest.h"
 #import <Parse/Parse.h>
 
 @interface SettingsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
-- (IBAction)LogoutButtonPressed:(id)sender;
+- (IBAction)showLoginButton:(id)sender;
+
 
 @end

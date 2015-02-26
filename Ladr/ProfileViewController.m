@@ -101,12 +101,47 @@
     
     
     //saving image chosen
-   
+    
+    //saving to parse
+    NSData* data = UIImageJPEGRepresentation(chosenImage, 0.5f);
+    NSString* imageTitle = [NSString stringWithString:[PFUser currentUser][@"username"]];
+    imageTitle = [imageTitle stringByAppendingString:@".jpg"];
+    PFFile *imageFile = [PFFile fileWithName:imageTitle data:data];
+    
+    
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // The image has now been uploaded to Parse. Associate it with a new object
+            PFObject* newPhotoObject = [PFObject objectWithClassName:@"PhotoObject"];
+            [newPhotoObject setObject:imageFile forKey:@"image"];
+            
+            [newPhotoObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [[PFUser currentUser] setObject:imageFile forKey:@"profilePic"];
+                    
+                    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) //newGroupCreated with initial member being current User
+                        {
+                            NSLog(@"user updated");
+                            
+                            
+                            
+                        }
+                        }];
+                            
+                    }
+                }];
+                    
+                }
+    }];
+
+
+    //saving to global var
     self.profilePicImageView.image = chosenImage;
     GlobalVarsTest *obj=[GlobalVarsTest getInstance];
     obj.profilePic = self.profilePicImageView.image;
     
-    
+    //saving to disk
     NSString* pathComponent = [PFUser currentUser][@"username"];
     pathComponent = [pathComponent stringByAppendingString:@"ProfilePic"];
     NSLog(@"%@", pathComponent);

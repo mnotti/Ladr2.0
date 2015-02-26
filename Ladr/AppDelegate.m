@@ -36,21 +36,31 @@
         self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
         NSLog(@"reached this point (1)");
         
-        //retrieving profile pic
-        NSString* pathComponent = [PFUser currentUser][@"username"];
-        pathComponent = [pathComponent stringByAppendingString:@"ProfilePic"];
-        NSLog(@"path component is : %@", pathComponent);
-        
-        NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        NSString *path = [dir stringByAppendingPathComponent:pathComponent];
-        if([[NSFileManager defaultManager] fileExistsAtPath:path])
+        //retrieving profile pic from disk
+//        NSString* pathComponent = [PFUser currentUser][@"username"];
+//        pathComponent = [pathComponent stringByAppendingString:@"ProfilePic"];
+//        NSLog(@"path component is : %@", pathComponent);
+//        
+//        NSString *dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//        NSString *path = [dir stringByAppendingPathComponent:pathComponent];
+//        if([[NSFileManager defaultManager] fileExistsAtPath:path])
+//        {
+//            NSFileHandle* myFileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+//            UIImage* loadedImage = [UIImage imageWithData:[myFileHandle readDataToEndOfFile]];
+//            GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+//            obj.profilePic = loadedImage;
+//        }
+
+        PFFile *file = (PFFile *)(currentUser[@"profilePic"]);
+        if(file)
         {
-            NSFileHandle* myFileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
-            UIImage* loadedImage = [UIImage imageWithData:[myFileHandle readDataToEndOfFile]];
+            NSData* data = [file getData];
             GlobalVarsTest *obj=[GlobalVarsTest getInstance];
-            obj.profilePic = loadedImage;
+
+            obj.profilePic = [UIImage imageWithData:data];
         }
         
+      
 
     }
     else

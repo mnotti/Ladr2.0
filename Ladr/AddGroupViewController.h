@@ -14,16 +14,10 @@
 @interface AddGroupViewController : UIViewController <UIGestureRecognizerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *groupNameTextField;
-@property (weak, nonatomic) IBOutlet UITableView *friendsTableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 @property (strong, nonatomic) NSMutableArray* userGroups;
-@property (strong, nonatomic) NSMutableArray* usersSelected;
-@property (strong, nonatomic) NSMutableArray* cellsSelected;
 
-@property (strong, nonatomic) NSArray* potentialFriends;
-
-@property (strong, nonatomic) PFUser* friendBeingDisplayed;
 @property (strong, nonatomic) PFUser* currentUser;
 
 

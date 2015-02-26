@@ -51,9 +51,16 @@
 }
 */
 
-- (IBAction)LogoutButtonPressed:(id)sender {
+
+
+- (IBAction)showLoginButton:(id)sender {
+    NSLog(@"button touched");
+    GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+    obj.profilePic = nil;
+    obj.userGroups = nil;
+
     [PFUser logOut];
-    [self performSegueWithIdentifier:@"showLogin" sender:self];
     
+    [self performSegueWithIdentifier:@"showLogin" sender:self];
 }
 @end

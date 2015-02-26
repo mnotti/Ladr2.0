@@ -199,20 +199,6 @@
 #pragma mark - button pressed
 - (IBAction)saveButtonPressed:(id)sender
 {
-        //self.doneButton.enabled = NO;
-//        if ([self.groupNameTextField.text  isEqual: @""]) //if user didn't type any text
-//        {
-//            self.doneButton.enabled =YES;
-//            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You literally suck" message:@"You need to enter a group name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
-//            [alert show];
-//        }
-    
-//        else if ([self.userGroups containsObject: self.groupNameTextField.text]) //if group already exists
-//        {
-//            self.doneButton.enabled =YES;
-//            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Try a New Name" message:@"You are already in a group with that name" delegate:self cancelButtonTitle:@"I am a fool" otherButtonTitles:nil, nil];
-//            [alert show];
-//        }
             long indexOfUser;
             for (NSString* name in self.usersSelectedNames)
             {
@@ -291,44 +277,11 @@
         }
     }];
     
-            ////////////////////////////////////////
     
-//            [newGroup saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                if (succeeded) //newGroupCreated with initial member being current User
-//                {
-//                    NSLog(@"new group saved");
-//    
-//                    for (PFUser* userToRequest in self.usersSelected)
-//                    {
-//                        PFObject* newGroupRequest = [PFObject objectWithClassName:@"GroupRequest"];
-//                        newGroupRequest[@"from"] = self.currentUser;
-//                        newGroupRequest[@"to"] = userToRequest;
-//                        newGroupRequest[@"group"] = newGroup;
-//                        newGroupRequest[@"groupName"] = self.groupNameNew;
-//                        [newGroupRequest saveInBackground];
-//                        NSLog(@"one request saved");
-//    
-//                    }
-//    
-//                    [self.userGroups insertObject:self.groupNameNew atIndex:0]; //adds group to user's group list
-//                    self.currentUser [@"groups"] = self.userGroups;
-//                    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                        if (succeeded) //current user's group list updated
-//                        {
-//                            NSLog(@"user saved");
-//    
-//                           // self.doneButton.enabled = YES;
-//                            NSLog(@"user saved");
-//                            [self.navigationController popToRootViewControllerAnimated:YES]; //return to main screen
-//                        }
-//                    }];
-//    
-//                }
-//            }];
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////////////////////////////////////////////
+    GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+    [obj.userGroups insertObject:newGroup atIndex:0];
+    
+
     
 
 }

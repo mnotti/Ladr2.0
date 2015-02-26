@@ -14,11 +14,15 @@
 @interface GlobalVarsTest : NSObject {
     
     UIImage *profilePic;
+    NSMutableArray* userGroups;
+    PFObject* currentGroup;
     
     
 }
 
-@property(nonatomic,retain)UIImage *profilePic;
+@property(nonatomic, retain) UIImage *profilePic;
+@property(nonatomic, retain) NSMutableArray* userGroups;
+@property(nonatomic, retain) PFObject* currentGroup;
 
 +(GlobalVarsTest*)getInstance;
 

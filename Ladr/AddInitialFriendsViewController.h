@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "GlobalVarsTest.h"
 
 
 @interface AddInitialFriendsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>{

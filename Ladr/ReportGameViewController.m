@@ -19,6 +19,7 @@
     self.indicesDisplayed = [[NSMutableArray alloc]init];
     self.opponentsPotentialData = [[NSMutableArray alloc] initWithArray:self.opponentsPotentialData];
     
+    
     //currentUserHasNotBeenPassedInTableView
     currentUserPassedFlag = false;
 
@@ -212,10 +213,15 @@
 
             
             self.currentGroup[@"memberData"] = self.opponentsPotentialData;
+            
             [self.currentGroup saveInBackground];
+      
         }
 
-        
+        GlobalVarsTest *obj=[GlobalVarsTest getInstance];
+        obj.currentGroup = self.currentGroup;
+        NSLog(@"current group loaded to global: %@", self.currentGroup);
+
         [self.navigationController popViewControllerAnimated:YES];
 
     }

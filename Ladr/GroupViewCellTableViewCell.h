@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *memberRating;
 @property (weak, nonatomic) IBOutlet UILabel *memberUsername;
 @property (weak, nonatomic) IBOutlet UILabel *memberRank;
+@property (weak, nonatomic) IBOutlet UILabel *winsLossesField;
 
 @end

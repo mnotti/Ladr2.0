@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "AcceptButton.h"
+#import "GlobalVarsTest.h"
 
 @interface NotificationTableViewController : UITableViewController
 
