@@ -128,12 +128,9 @@
 
 
     
-    [self.pendingRequestBeingDisplayed deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [self.tableView reloadData];
-
-    }];
-    
-    
+    [self.pendingRequestBeingDisplayed deleteInBackground];
+    [self.tempGroups removeObjectAtIndex:but.row];
+    [self.tableView reloadData];
     
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Group Joined" message:@"Succesfully joined...congratulations you can press buttons" delegate:self cancelButtonTitle:@"Sweet! I guess I'm cool now" otherButtonTitles:nil, nil];
     [alert show];
