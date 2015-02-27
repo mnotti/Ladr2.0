@@ -19,7 +19,7 @@
 
 @property (strong, nonatomic) NSMutableArray *filteredFriendsArray;
 @property (nonatomic, strong) NSMutableArray* potentialFriendsNames;
-@property (strong, nonatomic) NSArray* potentialFriends;
+@property (strong, nonatomic) NSMutableArray* potentialFriends;
 
 @property (strong, nonatomic) NSMutableArray* usersSelected;
 @property (strong, nonatomic) NSMutableArray* usersSelectedNames;

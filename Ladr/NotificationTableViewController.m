@@ -124,16 +124,17 @@
     [self.tempGroups[but.row] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         GlobalVarsTest *obj=[GlobalVarsTest getInstance];
         [obj.userGroups insertObject:(self.tempGroups[but.row]) atIndex:0];
+        
+        [self.pendingRequestBeingDisplayed deleteInBackground];
+        [self.tempGroups removeObjectAtIndex:but.row];
+        [self.tableView reloadData];
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Group Joined" message:@"Succesfully joined...congratulations you can press buttons" delegate:self cancelButtonTitle:@"Sweet! I guess I'm cool now" otherButtonTitles:nil, nil];
+        [alert show];
+
     }];
 
 
-    
-    [self.pendingRequestBeingDisplayed deleteInBackground];
-    [self.tempGroups removeObjectAtIndex:but.row];
-    [self.tableView reloadData];
-    
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Group Joined" message:@"Succesfully joined...congratulations you can press buttons" delegate:self cancelButtonTitle:@"Sweet! I guess I'm cool now" otherButtonTitles:nil, nil];
-    [alert show];
     
     
     

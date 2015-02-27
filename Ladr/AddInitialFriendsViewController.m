@@ -60,12 +60,16 @@
         
         if (!error)
         {
-            self.potentialFriends = objects;
+            self.potentialFriends = (NSMutableArray*)objects;
             NSLog(@"potential friends after query: %@", self.potentialFriends);
             //to initialize filtered array
             //self.filteredFriendsArray  = [NSMutableArray arrayWithCapacity:[self.potentialFriends count]];
+            [self.potentialFriends removeObject:self.currentUser];
             for (int i = 0; i < [self.potentialFriends count]; i++)
-               [ self.potentialFriendsNames addObject:(self.potentialFriends[i][@"username"]) ];
+            {
+                [ self.potentialFriendsNames addObject:(self.potentialFriends[i][@"username"]) ];
+            
+            }
             NSLog(@"potential friends names after query: %@", self.potentialFriendsNames);
 
             [self.initialFriendsTableView reloadData];
@@ -110,7 +114,7 @@
     if (_isFiltered)
         return [self.filteredFriendsArray count];
     else
-        return [self.potentialFriends count];
+        return [self.potentialFriendsNames count];
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath

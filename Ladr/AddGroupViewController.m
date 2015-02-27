@@ -122,6 +122,7 @@ bool imageSelected = NO;
         [alert show];
     }
     else{
+        self.doneButton.enabled = YES;
         [self performSegueWithIdentifier:@"showAddInitialFriends" sender:self];
     }
         

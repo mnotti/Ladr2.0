@@ -237,9 +237,12 @@
         GroupTableViewController *groupViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.mainTableView indexPathForSelectedRow];
         groupViewController.currentGroup = [self.actuallyGroups objectAtIndex:indexPath.row];
+        
         GlobalVarsTest *obj=[GlobalVarsTest getInstance];
         obj.currentGroup = [self.actuallyGroups objectAtIndex:indexPath.row];
-
+        PFObject* mostRecentGroupAccessed = [obj.userGroups objectAtIndex:indexPath.row];
+        [obj.userGroups removeObjectAtIndex:indexPath.row];
+        [obj.userGroups insertObject:mostRecentGroupAccessed atIndex:0];
     }
 }
 

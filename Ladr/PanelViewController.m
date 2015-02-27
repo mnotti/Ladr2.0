@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //eliminate status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:YES animated:NO];
+    
+ 
+    
     //setup pic
     
     self.usernameLabel.text = [PFUser currentUser][@"username"];
@@ -44,6 +49,10 @@
         self.profileImageView.image = obj.profilePic;
     }
 
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
