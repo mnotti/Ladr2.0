@@ -13,7 +13,7 @@
 
 @interface NotificationTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray* pendingRequests;
+@property (strong, nonatomic) NSMutableArray* pendingRequests;
 @property (strong, nonatomic) NSMutableArray* tempGroups;
 
 @property (strong, nonatomic) PFObject* pendingRequestBeingDisplayed;

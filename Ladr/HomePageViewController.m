@@ -246,7 +246,7 @@
     }
 }
 
-#pragma mark - buttons
+#pragma mark - buttons//
 - (void)addAction{
     [self performSegueWithIdentifier:@"showAddGroupController" sender:self];
     

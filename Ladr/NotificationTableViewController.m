@@ -38,7 +38,7 @@
             [self.tempGroups insertObject:object[@"group"]/*[@"name"]*/ atIndex:0];
         }
         NSLog(@"%@", self.tempGroups);
-        self.pendingRequests = objects;
+        self.pendingRequests = (NSMutableArray*)objects;
         [self.tableView reloadData];
                   }];
     //////////////////////////////////////////////////
@@ -107,12 +107,7 @@
     PFRelation *relation = [self.tempGroups[but.row] relationforKey:@"membersRelation"];
     [relation addObject:self.currentUser];
     
-    //adds the username of the user to the group's members Array for easy access to members
-//    [self.tempGroups[but.row] addUniqueObject:self.currentUser[@"username"] forKey:@"memberData"];
-//    [self.tempGroups[but.row] addObject:@500 forKey:@"memberData"];
-//    [self.tempGroups[but.row] addObject:@0 forKey:@"memberData"];
-//    [self.tempGroups[but.row] addObject:@0 forKey:@"memberData"];
-    NSMutableArray* tempGroupToAddTo = self.tempGroups[but.row][@"memberData"];
+       NSMutableArray* tempGroupToAddTo = self.tempGroups[but.row][@"memberData"];
     [tempGroupToAddTo addObject:self.currentUser[@"username"]];
     [tempGroupToAddTo addObject:@500 ];
     [tempGroupToAddTo addObject:@0 ];
@@ -125,9 +120,39 @@
         GlobalVarsTest *obj=[GlobalVarsTest getInstance];
         [obj.userGroups insertObject:(self.tempGroups[but.row]) atIndex:0];
         
+        //////////////////////
+        //THIS IS WHERE I WOULD REMOVE ALL REQUESTS FROM THE SAME GROUP
+        //////////////////////
+        
+       
+        PFObject* groupAcceptedTo = [self.tempGroups objectAtIndex:but.row];
+        
         [self.pendingRequestBeingDisplayed deleteInBackground];
         [self.tempGroups removeObjectAtIndex:but.row];
+        [self.pendingRequests removeObjectAtIndex:but.row];
+        
+        int OGcountOfPendingRequests = [self.pendingRequests count];
+        int indexBeingExamined = 0;
+        int i = 0;
+        
+        while (i < OGcountOfPendingRequests)
+        {
+            if ((self.pendingRequests[indexBeingExamined])[@"group"] == groupAcceptedTo)
+            {
+                [self.pendingRequests[indexBeingExamined] deleteInBackground];
+                [self.tempGroups removeObjectAtIndex:indexBeingExamined];
+                [self.pendingRequests removeObjectAtIndex:indexBeingExamined];
+                indexBeingExamined--;
+            }
+            indexBeingExamined++;
+            i++;
+        }
+  
         [self.tableView reloadData];
+        
+        ////////////////////////////////////////////////////////////////////////////////////////
+        
+        
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Group Joined" message:@"Succesfully joined...congratulations you can press buttons" delegate:self cancelButtonTitle:@"Sweet! I guess I'm cool now" otherButtonTitles:nil, nil];
         [alert show];

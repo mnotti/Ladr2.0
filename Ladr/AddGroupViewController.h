@@ -11,7 +11,7 @@
 #import "AddInitialFriendsViewController.h"
 #import "ImageChosenView.h"
 
-@interface AddGroupViewController : UIViewController <UIGestureRecognizerDelegate, UIImagePickerControllerDelegate>
+@interface AddGroupViewController : UIViewController <UIGestureRecognizerDelegate, UIImagePickerControllerDelegate>//
 
 @property (weak, nonatomic) IBOutlet UITextField *groupNameTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
