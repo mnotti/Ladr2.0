@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Wp2-r3-mj9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MRX-N4-9Q4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NuZ-Qu-NqQ">
@@ -106,7 +106,27 @@
                                     <segment title="Rankings"/>
                                     <segment title="Recent Games"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="IdC-Te-a0t" eventType="valueChanged" id="sBu-HP-Dyn"/>
+                                </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="o0b-lt-FWo">
+                                <rect key="frame" x="0.0" y="44" width="320" height="460"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="48" id="jVy-s8-bMv">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jVy-s8-bMv" id="oix-aU-TFm">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="586-oK-4Hk" id="XRu-oh-Sep"/>
+                                    <outlet property="delegate" destination="586-oK-4Hk" id="chX-Fb-BDc"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -115,16 +135,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WuV-mo-Qgh"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="navBar" destination="WuV-mo-Qgh" id="vHv-xR-Mji"/>
                         <outlet property="rankingsTableView" destination="NuZ-Qu-NqQ" id="rBo-ib-8r6"/>
+                        <outlet property="segmentedControl" destination="cYV-Bh-irZ" id="Zkc-Bu-4qG"/>
                         <segue destination="4LL-N4-wsy" kind="push" identifier="showReportScore" id="MVz-6Q-VBT"/>
                         <segue destination="iw0-BL-Hf3" kind="push" identifier="showAddFriends" id="PNX-KK-pkm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EXh-Rj-lOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="586-oK-4Hk" customClass="RecentGamesTableViewObject">
+                    <connections>
+                        <outlet property="recentGamesTableView" destination="o0b-lt-FWo" id="gax-9S-pwa"/>
+                    </connections>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="2404" y="281"/>
+            <point key="canvasLocation" x="2322" y="261"/>
         </scene>
         <!--Add Friends To Group View Controller-->
         <scene sceneID="wQU-tG-6Dw">
@@ -135,7 +163,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6AN-IW-ERb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UCW-og-I57">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pKL-py-zNN">
@@ -171,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PJK-XE-ywt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2853" y="-349"/>
+            <point key="canvasLocation" x="3085" y="-349"/>
         </scene>
         <!--Report Game View Controller-->
         <scene sceneID="O1D-oW-sbO">
@@ -182,7 +210,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Kpa-J0-sxk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BXh-AM-Hxj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wBM-sr-sJJ">
@@ -268,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1Z-Uk-OWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2853" y="281"/>
+            <point key="canvasLocation" x="3247" y="273"/>
         </scene>
         <!--Leagues-->
         <scene sceneID="HHB-cu-vPg">

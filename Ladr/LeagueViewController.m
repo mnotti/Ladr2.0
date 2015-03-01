@@ -13,6 +13,7 @@
 @end
 
 @implementation LeagueViewController
+@synthesize recentGamesTable;
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:(BOOL)animated];
@@ -22,23 +23,53 @@
     self.currentGroup = obj.currentGroup;
     self.groupMembersData = self.currentGroup[@"memberData"];
     
-    NSLog(@"before the sort: %@", self.groupMembersData);
     
     self.groupMembersData   = [self mergeSort:self.groupMembersData];
     
-    NSLog(@"after the sort: %@", self.groupMembersData);
     
     self.currentGroup[@"memberData"] = self.groupMembersData;
     obj.currentGroup = self.currentGroup;
     
     [self.rankingsTableView reloadData];
-    self.visibleCells = (NSMutableArray*)[self.rankingsTableView visibleCells];
+    [self.recentGamesTable.recentGamesTableView reloadData];
+
+   
     
-    [self animate:(0)];
+    
+    //TO ANIMATE THE CELLS FLYING IN SIDEWAYS
+     //self.visibleCells = (NSMutableArray*)[self.rankingsTableView visibleCells];
+    //[self animate:(0)];
+    
+    
+    if ([self.segmentedControl selectedSegmentIndex] == 0)
+    {
+        [self.rankingsTableView setHidden:NO];
+        [self.recentGamesTable.recentGamesTableView setHidden:YES];
+        [self.view bringSubviewToFront:self.rankingsTableView];
+    }
+    else{
+        [self.rankingsTableView setHidden:YES];
+        [self.recentGamesTable.recentGamesTableView setHidden:NO];
+        [self.view bringSubviewToFront:self.recentGamesTable.recentGamesTableView];
+
+
+
+
+    }
+    
+    //[recentGamesTable.recentGamesTableView setHidden:NO];
+    
+    
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"before the reload table");
+    [self.recentGamesTable.recentGamesTableView reloadData];
+    NSLog(@"after the reload table");
+
     UIBarButtonItem *reportScoreBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction)];
     
     UIBarButtonItem *addFriendsBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+ Friends" style:UIBarButtonItemStylePlain target:self action:@selector(addFriendsButton)];
@@ -69,7 +100,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    NSLog(@"groupMembers count = %lu", ((unsigned long)[self.groupMembersData count] / 4));
+    NSLog(@"still running section function");
     return ([self.groupMembersData count] / 4);
 }
 
@@ -81,12 +112,10 @@
     cell.memberRank.text = [NSString stringWithFormat:@"%d)", indexPath.row + 1];
     cell.memberUsername.text = [self.groupMembersData objectAtIndex:(indexPath.row * 4)];
     cell.memberRating.text = [NSString stringWithFormat:@"%@", [self.groupMembersData objectAtIndex:(indexPath.row * 4) + 1]];
-    NSLog(@"group data in cell: %@", self.groupMembersData);
     self.winsLosses = [NSString stringWithString:[[self.groupMembersData objectAtIndex:(indexPath.row * 4) + 2] stringValue]];
     self.winsLosses = [self.winsLosses stringByAppendingString:@"/"];
     self.winsLosses = [self.winsLosses stringByAppendingString:[[self.groupMembersData objectAtIndex:(indexPath.row * 4) + 3] stringValue]  ];
     cell.winsLossesField.text = self.winsLosses;
-    NSLog(@"winsLosses = %@", self.winsLosses);
     
     
     
@@ -254,6 +283,27 @@
     NSArray *newLeft = [leftArr subarrayWithRange:leftRange];
     newLeft = [result arrayByAddingObjectsFromArray:newLeft];
     return [newLeft arrayByAddingObjectsFromArray:newRight];
+}
+
+
+- (IBAction)segmentChanged:(UISegmentedControl *)sender {
+    switch (self.segmentedControl.selectedSegmentIndex)
+    {
+        case 0:
+            [self.rankingsTableView setHidden:NO];
+            [self.recentGamesTable.recentGamesTableView setHidden:YES];
+            [self.view bringSubviewToFront:self.rankingsTableView];
+
+            break;
+        case 1:
+            [self.rankingsTableView setHidden:YES];
+            [self.recentGamesTable.recentGamesTableView setHidden:NO];
+            [self.view bringSubviewToFront:self.recentGamesTable.recentGamesTableView];
+
+            break;
+        default: 
+            break; 
+    }
 }
 
 

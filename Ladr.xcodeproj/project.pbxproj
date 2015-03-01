@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A123A901AA287C200925612 /* LeagueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A123A8F1AA287C200925612 /* LeagueViewController.m */; };
+		4A123A931AA2FA7C00925612 /* RecentGamesTableViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A123A921AA2FA7C00925612 /* RecentGamesTableViewObject.m */; };
 		4A30ECC51A81FAB400E276C7 /* ladrLogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A30ECC41A81FAB400E276C7 /* ladrLogo1.png */; };
 		4A30ECC81A82004B00E276C7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECC71A82004B00E276C7 /* LoginViewController.m */; };
 		4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */; };
@@ -73,6 +74,8 @@
 		1B28E0483814BF506D628177 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A123A8E1AA287C200925612 /* LeagueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeagueViewController.h; sourceTree = "<group>"; };
 		4A123A8F1AA287C200925612 /* LeagueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeagueViewController.m; sourceTree = "<group>"; };
+		4A123A911AA2FA7C00925612 /* RecentGamesTableViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentGamesTableViewObject.h; sourceTree = "<group>"; };
+		4A123A921AA2FA7C00925612 /* RecentGamesTableViewObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentGamesTableViewObject.m; sourceTree = "<group>"; };
 		4A30ECC41A81FAB400E276C7 /* ladrLogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ladrLogo1.png; path = ../../../ladrArt/ladrLogo1.png; sourceTree = "<group>"; };
 		4A30ECC61A82004B00E276C7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4A30ECC71A82004B00E276C7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -321,6 +324,8 @@
 				4A123A8F1AA287C200925612 /* LeagueViewController.m */,
 				4A69B2871A8D7F3500026198 /* GroupViewCellTableViewCell.h */,
 				4A69B2881A8D7F3500026198 /* GroupViewCellTableViewCell.m */,
+				4A123A911AA2FA7C00925612 /* RecentGamesTableViewObject.h */,
+				4A123A921AA2FA7C00925612 /* RecentGamesTableViewObject.m */,
 				4A69B28A1A8D8EEE00026198 /* ReportGameViewController.h */,
 				4A69B28B1A8D8EEE00026198 /* ReportGameViewController.m */,
 				4ADE26611A91A17D009C6A55 /* AddFriendsToGroupViewController.h */,
@@ -535,6 +540,7 @@
 				4AEF4A011A9AA24D00A2561D /* GlobalVarsTest.m in Sources */,
 				4ABB3D281A7DE992001724D5 /* AppDelegate.m in Sources */,
 				4ADA1ACC1A96C088004E499E /* photoCellCollectionViewCell.m in Sources */,
+				4A123A931AA2FA7C00925612 /* RecentGamesTableViewObject.m in Sources */,
 				4A69B2891A8D7F3500026198 /* GroupViewCellTableViewCell.m in Sources */,
 				4A60176D1A90A86200847F64 /* SWRevealViewController.m in Sources */,
 				4A6017741A90C0BA00847F64 /* SettingsViewController.m in Sources */,

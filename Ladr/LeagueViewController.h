@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+
 #import "GroupViewCellTableViewCell.h"
 #import "ReportGameViewController.h"
 #import "AddFriendsToGroupViewController.h"
 #import "GlobalVarsTest.h"
+#import "RecentGamesTableViewObject.h"
 
 @interface LeagueViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 
 @property (weak, nonatomic) IBOutlet UITableView *rankingsTableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property (nonatomic, strong) NSString* winsLosses;
 
@@ -26,6 +29,8 @@
 @property (nonatomic, strong) NSString* currentGroupName;
 
 @property (nonatomic, strong) NSMutableArray* visibleCells;
+
+@property (nonatomic, strong) RecentGamesTableViewObject* recentGamesTable;
 
 
 @end
