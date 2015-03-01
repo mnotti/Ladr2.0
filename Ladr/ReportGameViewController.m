@@ -65,17 +65,23 @@
     
     
    //if there's no check
-    if (!rowWithSelectedCell == indexInt)
+    if (!(rowWithSelectedCell == indexInt))
     {
+        NSLog(@"previous row with selected cell : %ld", rowWithSelectedCell);
+
         rowWithSelectedCell = indexInt;
         
         cell.accessoryType = UITableViewCellAccessoryCheckmark; //add a check
-        
+        NSLog(@"row with selected cell : %ld", rowWithSelectedCell);
     }
     else  //if there's a check already
     {
+         NSLog(@"previous row with selected cell : %ld", rowWithSelectedCell);
         rowWithSelectedCell = -1;
         cell.accessoryType = UITableViewCellAccessoryNone; //take away check
+         NSLog(@"already checked...row with selected cell : %ld", rowWithSelectedCell);
+        NSLog(@"selected cell : %ld", (long)indexPath.row);
+
         
     }
     [tableView reloadData];

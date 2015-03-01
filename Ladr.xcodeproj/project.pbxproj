@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A123A901AA287C200925612 /* LeagueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A123A8F1AA287C200925612 /* LeagueViewController.m */; };
 		4A30ECC51A81FAB400E276C7 /* ladrLogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A30ECC41A81FAB400E276C7 /* ladrLogo1.png */; };
 		4A30ECC81A82004B00E276C7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECC71A82004B00E276C7 /* LoginViewController.m */; };
 		4A30ECCB1A82005B00E276C7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30ECCA1A82005B00E276C7 /* SignUpViewController.m */; };
@@ -70,6 +71,8 @@
 /* Begin PBXFileReference section */
 		011EE01044F383563A7CAF8E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1B28E0483814BF506D628177 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A123A8E1AA287C200925612 /* LeagueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeagueViewController.h; sourceTree = "<group>"; };
+		4A123A8F1AA287C200925612 /* LeagueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeagueViewController.m; sourceTree = "<group>"; };
 		4A30ECC41A81FAB400E276C7 /* ladrLogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ladrLogo1.png; path = ../../../ladrArt/ladrLogo1.png; sourceTree = "<group>"; };
 		4A30ECC61A82004B00E276C7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4A30ECC71A82004B00E276C7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 			children = (
 				4A6AF4E31A8C01B60015D09E /* GroupTableViewController.h */,
 				4A6AF4E41A8C01B60015D09E /* GroupTableViewController.m */,
+				4A123A8E1AA287C200925612 /* LeagueViewController.h */,
+				4A123A8F1AA287C200925612 /* LeagueViewController.m */,
 				4A69B2871A8D7F3500026198 /* GroupViewCellTableViewCell.h */,
 				4A69B2881A8D7F3500026198 /* GroupViewCellTableViewCell.m */,
 				4A69B28A1A8D8EEE00026198 /* ReportGameViewController.h */,
@@ -543,6 +548,7 @@
 				4A60176A1A9092C800847F64 /* HomePageViewController.m in Sources */,
 				4A9CC3621A847374006F8706 /* homePageTableViewTableViewController.m in Sources */,
 				4ABB3D2B1A7DE992001724D5 /* Ladr.xcdatamodeld in Sources */,
+				4A123A901AA287C200925612 /* LeagueViewController.m in Sources */,
 				4ADA1ACF1A96E06C004E499E /* ImageChosenView.m in Sources */,
 				4A69B28C1A8D8EEE00026198 /* ReportGameViewController.m in Sources */,
 				4A6AF4E51A8C01B60015D09E /* GroupTableViewController.m in Sources */,

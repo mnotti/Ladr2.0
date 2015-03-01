@@ -131,7 +131,7 @@
         [self.tempGroups removeObjectAtIndex:but.row];
         [self.pendingRequests removeObjectAtIndex:but.row];
         
-        int OGcountOfPendingRequests = [self.pendingRequests count];
+        int OGcountOfPendingRequests = (int)[self.pendingRequests count];
         int indexBeingExamined = 0;
         int i = 0;
         
