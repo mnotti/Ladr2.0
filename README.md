@@ -1,13 +1,5 @@
 # Ladr2.0
-second try 
-
-my milkshakes bring all the bois 2 the yard
-
-damn right...they're twice as good as inn n out's!
-
-Take that inn n out...you've got nuthin
-(said no one ever)
-
-I'd still go to inn n out, my milkshakes aren't fantastic.
-...my rap game tho, uncontested
+Ladr in objectiveC
+  - social/competetive app where friends create leagues and track individual's performances, establishing a ranking system.
+Currently being rebuilt more robustly in Swift
 
